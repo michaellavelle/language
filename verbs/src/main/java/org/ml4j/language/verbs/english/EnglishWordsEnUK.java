@@ -55,36 +55,45 @@ public class EnglishWordsEnUK {
 
     private final static String MISC_WORDS_FILE_PATH = "/english/regular/en_UK/misc_words.csv";
 
-    public final static List<WordDefinition> VERBS_STARTING_WITH_A = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_A_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_B = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_B_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_C = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_C_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_D = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_D_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_E = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_E_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_F = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_F_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_G = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_G_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_H = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_H_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_I = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_I_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_J = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_J_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_K = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_K_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_L = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_L_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_M = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_M_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_N = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_N_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_O = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_O_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_P = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_P_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_Q = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_Q_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_R = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_R_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_S = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_S_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_T = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_T_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_U = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_U_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_V = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_V_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_W = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_W_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_X = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_X_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_Y = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_Y_DEFINITION_FILE_PATH).load();
-    public final static List<WordDefinition> VERBS_STARTING_WITH_Z = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, VERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_A = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_A_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_B = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_B_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_C = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_C_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_D = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_D_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_E = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_E_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_F = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_F_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_G = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_G_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_H = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_H_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_I = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_I_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_J = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_J_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_K = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_K_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_L = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_L_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_M = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_M_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_N = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_N_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_O = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_O_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_P = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_P_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_Q = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_Q_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_R = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_R_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_S = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_S_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_T = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_T_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_U = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_U_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_V = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_V_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_W = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_W_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_X = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_X_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_Y = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_Y_DEFINITION_FILE_PATH).load();
+    public final static List<WordDefinition> VERBS_STARTING_WITH_Z = new CSVReader<>(v -> createWordDefinition(v), false, VERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH).load();
 
-    public final static List<WordDefinition> MISC_WORDS = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false, MISC_WORDS_FILE_PATH).load();
+    public final static List<WordDefinition> MISC_WORDS = new CSVReader<>(v -> createWordDefinition(v), false, MISC_WORDS_FILE_PATH).load();
 
-    public final static List<WordDefinition> ALL_VERBS = new CSVReader<>(v -> new WordDefinition(v.get(0), Boolean.valueOf(v.get(1)), v.subList(2, v.size())), false,
+    private static WordDefinition createWordDefinition(List<String> values) {
+        if (values.size() > 1) {
+            return new WordDefinition(values.get(0), Boolean.valueOf(values.get(1)), values.subList(2, values.size()));
+        } else {
+            return new WordDefinition(values.get(0));
+        }
+    }
+
+
+    public final static List<WordDefinition> ALL_VERBS = new CSVReader<>(v -> createWordDefinition(v), false,
             VERBS_STARTING_WITH_A_DEFINITION_FILE_PATH,
             VERBS_STARTING_WITH_B_DEFINITION_FILE_PATH,
             VERBS_STARTING_WITH_C_DEFINITION_FILE_PATH,

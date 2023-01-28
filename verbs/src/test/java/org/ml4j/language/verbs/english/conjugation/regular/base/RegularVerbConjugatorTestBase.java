@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 public class RegularVerbConjugatorTestBase {
 
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_A_FILE_PATH = "/english/regular/en_UK/regular_verbs_a_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_B_FILE_PATH = "/english/regular/en_UK/regular_verbs_b_conjugations.csv";
+
 
     private String getValueFromVariables(List<String> csvVariables, String key) {
         String prefix = key + "=";
