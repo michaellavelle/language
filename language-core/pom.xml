@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ml4j</groupId>
-    <artifactId>verbs</artifactId>
+    <artifactId>language-core</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
-    <name>verbs</name>
+    <name>language-core</name>
     <properties>
     </properties>
     <distributionManagement>
@@ -13,11 +13,6 @@
     <repositories>
     </repositories>
     <dependencies>
-        <dependency>
-            <groupId>org.ml4j</groupId>
-            <artifactId>language-core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
