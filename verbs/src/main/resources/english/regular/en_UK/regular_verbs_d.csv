@@ -43,7 +43,7 @@ decentralise,
 decide,
 decimate,
 decipher,false,de,cipher
-decypher,false,de,cypsher
+decypher,false,de,cypher
 deck,
 declaim,
 declare,
@@ -81,7 +81,7 @@ defect,
 defederate,false,de,federate
 defend,
 defenestrate,
-defer,false,defer
+defer,true,defer
 define,
 deflate,
 deflect,

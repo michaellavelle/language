@@ -152,6 +152,9 @@ public class HackyPrototypeHelper {
                 String suffixStringIncludingDelimiter = verb.substring(prefix.length());
                 String secondWordComponent = wordDefinition.getComponents().get(1);
                 int secondWordComponentIndex = suffixStringIncludingDelimiter.indexOf(secondWordComponent);
+                if (secondWordComponentIndex == -1) {
+                    throw new RuntimeException("Issue with config for verb:" + verb);
+                }
                 String suffixString = suffixStringIncludingDelimiter.substring(secondWordComponentIndex);
 
                 String delimiter = suffixStringIncludingDelimiter.substring(0, secondWordComponentIndex);
