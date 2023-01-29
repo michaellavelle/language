@@ -144,6 +144,7 @@ chunk,past_tense=chunked,present_participle=chunking
 churn,past_tense=churned,present_participle=churning
 churr,past_tense=churred,present_participle=churring
 cinch,past_tense=cinched,present_participle=cinching
+cipher,past_tense=ciphered,present_participle=ciphering
 circle,past_tense=circled,present_participle=circling
 circuit,past_tense=circuited,present_participle=circuiting
 circulate,past_tense=circulated,present_participle=circulating
@@ -504,3 +505,4 @@ customise,past_tense=customised,present_participle=customising
 cyberbully,past_tense=cyberbullied,present_participle=cyberbullying
 cyberstalk,past_tense=cyberstalked,present_participle=cyberstalking
 cycle,past_tense=cycled,present_participle=cycling
+cypher,past_tense=cyphered,present_participle=cyphering

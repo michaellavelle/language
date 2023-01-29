@@ -144,6 +144,7 @@ chunk,
 churn,
 churr,
 cinch,
+cipher,false,cipher
 circle,
 circuit,
 circulate,
@@ -463,8 +464,8 @@ cross,
 crouch,
 crow,
 crowd,
-crowdfarm,
-crowdfund,
+crowdfarm,false,crowd,farm
+crowdfund,false,crowd,fund
 crown,
 crucify,
 cruise,
@@ -501,6 +502,7 @@ curve,
 cushion,
 cuss,
 customise,
-cyberbully,
-cyberstalk,
+cyberbully,false,cyber,bully
+cyberstalk,false,cyber,stalk
 cycle,
+cypher,false,cypher
