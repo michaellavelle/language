@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.ml4j.language.verbs.english.conjugation.regular;
+package org.ml4j.language.verbs.english.conjugation.irregular;
 
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugationBase;
@@ -23,27 +23,28 @@ import java.util.List;
  *
  * @author Michael Lavelle
  */
-public class RegularVerbConjugation extends VerbConjugationBase implements VerbConjugation {
+public class IrregularVerbConjugation extends VerbConjugationBase implements VerbConjugation {
 
-    public RegularVerbConjugation(String verb, int meaningId, String pastTense, String presentParticiple) {
-        super(verb, meaningId, pastTense, presentParticiple);
-    }
+    private List<String> pastParticiples;
 
-    public RegularVerbConjugation(String verb, int meaningId, List<String> pastTenses, List<String> presentParticiples) {
+    public IrregularVerbConjugation(String verb, int meaningId, List<String> pastTenses, List<String> pastParticiples, List<String> presentParticiples) {
         super(verb, meaningId, pastTenses, presentParticiples);
+        // We may not always have past participles defined - in which case use the past tense(s)
+        this.pastParticiples = pastParticiples.isEmpty() ? pastTenses : pastParticiples;
     }
 
     @Override
     public String toString() {
-        return "RegularVerbConjugation{" +
+        return "IrregularVerbConjugation{" +
                 "verb='" + getVerb() + '\'' +
                 ", pastTenses=" + getPastTenses() +
+                ", pastParticiples=" + getPastParticiples() +
                 ", presentParticiples=" + getPresentParticiples() +
                 '}';
     }
 
     @Override
     public List<String> getPastParticiples() {
-        return getPastTenses();
+        return pastParticiples;
     }
 }

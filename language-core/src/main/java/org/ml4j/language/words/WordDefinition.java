@@ -23,34 +23,34 @@ import java.util.Optional;
  * @author Michael Lavelle
  */
 public class WordDefinition {
-    private String word;
+    private WordDefinitionId wordDefinitionId;
     private Optional<Boolean> stressOnLastSyllable;
     private List<String> components;
 
-    public WordDefinition(String word, boolean stressOnLastSyllable, List<String> components) {
-        this.word = word;
+    public WordDefinition(WordDefinitionId wordDefinitionId, boolean stressOnLastSyllable, List<String> components) {
+        this.wordDefinitionId = wordDefinitionId;
         this.stressOnLastSyllable = Optional.of(stressOnLastSyllable);
         this.components = components;
     }
 
-    public WordDefinition(String word, boolean stressOnLastSyllable) {
-        this.word = word;
+    public WordDefinition(WordDefinitionId wordDefinitionId, boolean stressOnLastSyllable) {
+        this.wordDefinitionId = wordDefinitionId;
         this.stressOnLastSyllable = Optional.of(stressOnLastSyllable);
-        this.components = Arrays.asList(word);
+        this.components = Arrays.asList(wordDefinitionId.getWord());
     }
 
-    public WordDefinition(String word) {
-        this.word = word;
+    public WordDefinition(WordDefinitionId wordDefinitionId) {
+        this.wordDefinitionId = wordDefinitionId;
         this.stressOnLastSyllable = Optional.empty();
-        this.components = Arrays.asList(word);
+        this.components = Arrays.asList(wordDefinitionId.getWord());
     }
 
     public String getWord() {
-        return word;
+        return wordDefinitionId.getWord();
     }
 
     public boolean isStressOnLastSyllable() {
-        return stressOnLastSyllable.orElseThrow(() -> new IllegalStateException("Stress on last syllable not defined for:" + word));
+        return stressOnLastSyllable.orElseThrow(() -> new IllegalStateException("Stress on last syllable not defined for:" + getWord()));
     }
 
     public List<String> getComponents() {
@@ -60,9 +60,12 @@ public class WordDefinition {
     @Override
     public String toString() {
         return "WordDefinition{" +
-                "word='" + word + '\'' +
                 ", stressOnLastSyllable=" + stressOnLastSyllable +
                 ", components=" + components +
                 '}';
+    }
+
+    public WordDefinitionId getWordDefinitionId() {
+        return wordDefinitionId;
     }
 }

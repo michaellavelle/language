@@ -13,28 +13,36 @@
  */
 package org.ml4j.language.core.util;
 
+import org.ml4j.language.words.WordDefinition;
+import org.ml4j.language.words.WordDefinitionId;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
  * Default implementation of a CSV Reader
  *
+ * @param <I> The type of id of each record we are reading
+ * @param <T> The type of record
  * @author Michael Lavelle
  */
-public class CSVReader<T> {
+public class CSVReader<I, T> {
 
-    private Function<List<String>, T> mappingFunction;
+    private BiFunction<I, List<String>, T> mappingFunction;
     private boolean firstLineAsHeader;
     private List<String> fileResources;
+    private Function<T, I> idExtractor;
+    private BiFunction<SortedMap<I, T>, List<String>, I> idGenerator;
 
-    public CSVReader(Function<List<String>, T> mappingFunction, boolean firstLineAsHeader, String primaryFileResource, String... additionalFileResources) {
+    public CSVReader(BiFunction<I, List<String>, T> mappingFunction, Function<T, I> idExtractor,
+                     BiFunction<SortedMap<I, T>, List<String>, I> idGenerator, boolean firstLineAsHeader, String primaryFileResource, String... additionalFileResources) {
         this.mappingFunction = mappingFunction;
+        this.idExtractor = idExtractor;
+        this.idGenerator = idGenerator;
         this.firstLineAsHeader = firstLineAsHeader;
         this.fileResources = new ArrayList<>();
         this.fileResources.add(primaryFileResource);
@@ -44,8 +52,45 @@ public class CSVReader<T> {
         this.fileResources.addAll(Arrays.asList(additionalFileResources));
     }
 
-    public List<T> load() {
-        List<T> results = new ArrayList<>();
+    public CSVReader(BiFunction<I, List<String>, T> mappingFunction, Function<T, I> idExtractor,
+                     BiFunction<SortedMap<I, T>, List<String>, I> idGenerator, boolean firstLineAsHeader, List<String> fileResources) {
+        this.mappingFunction = mappingFunction;
+        this.idExtractor = idExtractor;
+        this.idGenerator = idGenerator;
+        this.firstLineAsHeader = firstLineAsHeader;
+        this.fileResources = fileResources;
+        if (firstLineAsHeader) {
+            throw new UnsupportedOperationException("First line as header configuration not yet implemented");
+        }
+    }
+
+    protected static int getOccurrenceId(SortedMap<WordDefinitionId, WordDefinition> resultsSoFar, String verb) {
+        int meaningId = 1;
+        Integer maxMeaningId = null;
+        for (Map.Entry<WordDefinitionId, WordDefinition> entry : resultsSoFar.entrySet()) {
+            if (entry.getValue().getWord().equals(verb)) {
+                meaningId++;
+                if (maxMeaningId == null || entry.getKey().getMeaningId() > maxMeaningId.intValue()) {
+                    maxMeaningId = entry.getKey().getMeaningId() + 1;
+                }
+            }
+        }
+        // Sanity check
+        if (maxMeaningId != null) {
+            if (meaningId != (maxMeaningId)) {
+                throw new IllegalStateException("Meaning id does match expected value of " + (maxMeaningId));
+            }
+        } else {
+            if (meaningId != 1) {
+                throw new IllegalStateException("Meaning id does match expected value of 1");
+            }
+        }
+
+        return meaningId;
+    }
+
+    public SortedMap<I, T> load() {
+        SortedMap<I, T> results = new TreeMap<>();
         for (String resource : fileResources) {
             try (InputStream is = CSVReader.class.getResourceAsStream(resource)) {
                 try (BufferedInputStream bis = new BufferedInputStream(is)) {
@@ -53,7 +98,11 @@ public class CSVReader<T> {
                     StringTokenizer st = new StringTokenizer(content, "\n");
                     while (st.hasMoreTokens()) {
                         String line = st.nextToken().trim();
-                        results.add(getMappedLine(line));
+                        if (!line.isEmpty()) {
+                            T mapped = getMappedLine(results, line);
+                            I id = idExtractor.apply(mapped);
+                            results.put(id, getMappedLine(results, line));
+                        }
                     }
                 }
             } catch (IOException e) {
@@ -63,12 +112,14 @@ public class CSVReader<T> {
         return results;
     }
 
-    private T getMappedLine(String line) {
+    private T getMappedLine(SortedMap<I, T> resultsSoFar, String line) {
         StringTokenizer st = new StringTokenizer(line, ",");
         List<String> variables = new ArrayList<>();
         while (st.hasMoreTokens()) {
             variables.add(st.nextToken());
         }
-        return mappingFunction.apply(variables);
+        I id = idGenerator.apply(resultsSoFar, variables);
+        T mapped = mappingFunction.apply(id, variables);
+        return mapped;
     }
 }

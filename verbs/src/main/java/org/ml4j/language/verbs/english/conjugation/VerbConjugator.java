@@ -14,18 +14,23 @@
 package org.ml4j.language.verbs.english.conjugation;
 
 import org.ml4j.language.words.WordDefinition;
+import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.List;
+import java.util.SortedMap;
 
 /**
  * Default interface for a verb conjugation service.
  *
- * @author Michael Lavelle
  * @param <C> The type of VerbConjugation being returned
+ * @author Michael Lavelle
  */
 public interface VerbConjugator<C extends VerbConjugation> {
 
     C getConjugatedVerb(WordDefinition verbDefinition);
 
     List<C> getConjugatedVerbs(List<WordDefinition> verbDefinition);
+
+    SortedMap<WordDefinitionId, C> getConjugatedVerbs(SortedMap<WordDefinitionId, WordDefinition> verbDefinition);
+
 }

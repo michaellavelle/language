@@ -13,10 +13,21 @@
  */
 package org.ml4j.language.verbs.english.conjugation;
 
+import java.util.List;
+
 /**
  * Interface for the results of a Verb conjugation - just a tagging interface at present
  *
  * @author Michael Lavelle
  */
 public interface VerbConjugation {
+    String getVerb();
+
+    int getMeaningId();
+
+    List<String> getPastTenses();
+
+    List<String> getPastParticiples();
+
+    List<String> getPresentParticiples();
 }

@@ -1,14 +1,16 @@
 package org.ml4j.language.verbs.english.conjugation.regular.base;
 
 import org.junit.jupiter.api.Assertions;
-import org.ml4j.language.core.util.CSVReader;
 import org.ml4j.language.verbs.english.conjugation.regular.RegularVerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.regular.RegularVerbConjugator;
+import org.ml4j.language.verbs.english.conjugation.util.VerbConjugationCSVReader;
 import org.ml4j.language.words.WordDefinition;
+import org.ml4j.language.words.WordDefinitionId;
 
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
 import java.util.stream.Collectors;
 
 public class RegularVerbConjugatorTestBase {
@@ -20,36 +22,34 @@ public class RegularVerbConjugatorTestBase {
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_E_FILE_PATH = "/english/regular/en_UK/regular_verbs_e_conjugations.csv";
 
 
-    private String getValueFromVariables(List<String> csvVariables, String key) {
+    private List<String> getValuesFromVariables(List<String> csvVariables, String key, boolean required) {
         String prefix = key + "=";
         List<String> candidates = csvVariables.stream().filter(v -> v.startsWith(prefix)).collect(Collectors.toList());
-        if (candidates.size() > 1) {
-            throw new IllegalStateException("Only expecting to have one past tense defined at this time for:" + csvVariables.get(0));
-        } else if (candidates.size() == 0) {
-            throw new IllegalStateException("Not past tense defined for:" + csvVariables.get(0));
+        if (required && candidates.isEmpty()) {
+            throw new IllegalStateException("No value defined for key:" + key + " within:" + csvVariables);
         } else {
-            return candidates.get(0).substring(prefix.length());
+            return candidates.stream().map(v -> v.substring(prefix.length())).collect(Collectors.toList());
         }
     }
 
-    protected void testRegularVerbConjugation(List<WordDefinition> verbs, String expectedResultsFilePath) {
+    protected void testRegularVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePath) {
 
         RegularVerbConjugator regularVerbConjugator = new RegularVerbConjugator();
 
-        List<RegularVerbConjugation> expectedConjeugatedVerbsStartingWithA = new CSVReader<>(v ->
-                new RegularVerbConjugation(v.get(0), getValueFromVariables(v, "past_tense"), getValueFromVariables(v, "present_participle")), false, expectedResultsFilePath).load();
-        Collections.sort(expectedConjeugatedVerbsStartingWithA, Comparator.comparing(RegularVerbConjugation::getVerb));
+        SortedMap<WordDefinitionId, RegularVerbConjugation> expectedConjugatedVerbsStartingWithA =
+                new VerbConjugationCSVReader<>((i, v) ->
+                        new RegularVerbConjugation(v.get(0), i.getMeaningId(), getValuesFromVariables(v, "past_tense", false), getValuesFromVariables(v, "present_participle", true)),
+                        false, Arrays.asList(expectedResultsFilePath)).load();
 
-        List<RegularVerbConjugation> conjugatedVerbsStartingWithA = regularVerbConjugator.getConjugatedVerbs(verbs);
-        Collections.sort(conjugatedVerbsStartingWithA, Comparator.comparing(RegularVerbConjugation::getVerb));
+        SortedMap<WordDefinitionId, RegularVerbConjugation> conjugatedVerbsStartingWithA = regularVerbConjugator.getConjugatedVerbs(verbs);
 
-        //Assertions.assertEquals(expectedConjeugatedVerbsStartingWithA.size(), conjugatedVerbsStartingWithA.size());
+        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA.size(), conjugatedVerbsStartingWithA.size());
 
-        for (int i = 0; i < expectedConjeugatedVerbsStartingWithA.size(); i++) {
-            Assertions.assertEquals(expectedConjeugatedVerbsStartingWithA.get(i), conjugatedVerbsStartingWithA.get(i));
+        for (Map.Entry<WordDefinitionId, RegularVerbConjugation> entry : expectedConjugatedVerbsStartingWithA.entrySet()) {
+            Assertions.assertEquals(entry.getValue(), conjugatedVerbsStartingWithA.get(entry.getKey()));
         }
 
-        Assertions.assertEquals(expectedConjeugatedVerbsStartingWithA, conjugatedVerbsStartingWithA);
+        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA, conjugatedVerbsStartingWithA);
 
     }
 }
