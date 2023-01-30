@@ -1,6 +1,9 @@
 arise,past_tense=arose,past_participle=arisen,present_participle=arising
 awake,past_tense=awoke,past_participle=awoken,present_participle=awaking
 backlight,past_tense=backlit,past_participle=backlit,past_participle=backlighted,present_participle=backlighting
+bear,past_tense=bore,past_participle=borne,present_participle=bearing
+beat,past_tense=beat,past_participle=beaten,present_participle=beating
+become,past_tense=became,past_participle=become,present_participle=becoming
 bed,past_tense=bed,past_tense=bedded,present_participle=bedding
 befall,past_tense=befell,past_participle=befallen,present_participle=befalling
 begin,past_tense=began,past_participle=begun,present_participle=beginning
@@ -39,7 +42,7 @@ override,past_tense=overrode,past_participle=overridden,present_participle=overr
 overtake,past_tense=overtook,past_participle=overtaken,present_participle=overtaking
 prove,past_tense=proved,past_tense=proven,past_participle=proved,past_participle=proven,present_participle=proving
 redraw,past_tense=redrew,past_participle=redrawn,present_participle=redrawing
-relight,past_tense=relighted,past_tense=re-lit,past_participle=relighted,past_participle=re-lit,present_participle=relighting
+relight,past_tense=relighted,past_tense=relit,past_participle=relighted,past_participle=relit,present_participle=relighting
 retake,past_tense=retook,past_participle=retaken,present_participle=retaking
 ride,past_tense=rode,past_participle=ridden,present_participle=riding
 ring,past_tense=rang,past_participle=rung,present_participle=ringing

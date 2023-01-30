@@ -55,6 +55,7 @@ public class EnglishWordsEnUK {
     private final static String VERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH = "/english/regular/en_UK/regular_verbs_z.csv";
 
     private final static String IRREGULAR_VERBS_TYPE_1_DEFINITION_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_1.csv";
+    private final static String IRREGULAR_VERBS_TYPE_2_DEFINITION_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_2.csv";
 
 
     private final static String MISC_WORDS_FILE_PATH = "/english/regular/en_UK/misc_words.csv";
@@ -87,6 +88,7 @@ public class EnglishWordsEnUK {
     public final static SortedMap<WordDefinitionId, WordDefinition> VERBS_STARTING_WITH_Z = new WordDefinitionCSVReader(false, VERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH).load();
 
     public final static SortedMap<WordDefinitionId, WordDefinition> IRREGULAR_VERBS_TYPE_1 = new WordDefinitionCSVReader(false, IRREGULAR_VERBS_TYPE_1_DEFINITION_FILE_PATH).load();
+    public final static SortedMap<WordDefinitionId, WordDefinition> IRREGULAR_VERBS_TYPE_2 = new WordDefinitionCSVReader(false, IRREGULAR_VERBS_TYPE_2_DEFINITION_FILE_PATH).load();
 
 
     public final static SortedMap<WordDefinitionId, WordDefinition> MISC_WORDS = new WordDefinitionCSVReader(false, MISC_WORDS_FILE_PATH).load();
@@ -119,7 +121,8 @@ public class EnglishWordsEnUK {
             VERBS_STARTING_WITH_X_DEFINITION_FILE_PATH,
             VERBS_STARTING_WITH_Y_DEFINITION_FILE_PATH,
             VERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH,
-            IRREGULAR_VERBS_TYPE_1_DEFINITION_FILE_PATH
+            IRREGULAR_VERBS_TYPE_1_DEFINITION_FILE_PATH,
+            IRREGULAR_VERBS_TYPE_2_DEFINITION_FILE_PATH
     ).load();
 
     public final static SortedMap<WordDefinitionId, WordDefinition> ALL_WORDS = new TreeMap<>();

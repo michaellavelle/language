@@ -18,6 +18,10 @@ public class IrregularVerbConjugatorTestBase {
     protected final static String DEFINED_CONJUGATED_VERBS_TYPE_1_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_1_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_1_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_1_expected_conjugations.csv";
 
+    protected final static String DEFINED_CONJUGATED_VERBS_TYPE_2_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_2_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_2_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_2_expected_conjugations.csv";
+
+
     private List<String> getValuesFromVariables(List<String> csvVariables, String key, boolean required) {
         String prefix = key + "=";
         List<String> candidates = csvVariables.stream().filter(v -> v.startsWith(prefix)).collect(Collectors.toList());
@@ -28,9 +32,9 @@ public class IrregularVerbConjugatorTestBase {
         }
     }
 
-    protected void testRegularVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePath) {
+    protected void testIrregularVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePath) {
 
-        IrregularVerbConjugator irregularVerbConjugator = new IrregularVerbConjugator(Arrays.asList(DEFINED_CONJUGATED_VERBS_TYPE_1_FILE_PATH));
+        IrregularVerbConjugator irregularVerbConjugator = new IrregularVerbConjugator(Arrays.asList(DEFINED_CONJUGATED_VERBS_TYPE_1_FILE_PATH, DEFINED_CONJUGATED_VERBS_TYPE_2_FILE_PATH));
 
         SortedMap<WordDefinitionId, IrregularVerbConjugation> expectedConjugatedVerbsStartingWithA = new VerbConjugationCSVReader<>((i, v) ->
                 new IrregularVerbConjugation(v.get(0), i.getMeaningId(), getValuesFromVariables(v, "past_tense", false), getValuesFromVariables(v, "past_participle", false), getValuesFromVariables(v, "present_participle", true)),
