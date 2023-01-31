@@ -52,11 +52,11 @@ public class VerbConjugationCSVReader<T extends VerbConjugation> extends CSVRead
         // Sanity check
         if (maxMeaningId != null) {
             if (meaningId != (maxMeaningId)) {
-                throw new IllegalStateException("Meaning id does match expected value of " + (maxMeaningId));
+                throw new IllegalStateException("Meaning id does match expected value of " + (maxMeaningId) + " for:" + verb);
             }
         } else {
             if (meaningId != 1) {
-                throw new IllegalStateException("Meaning id does match expected value of 1");
+                throw new IllegalStateException("Meaning id does match expected value of 1 for :" + verb);
             }
         }
 
