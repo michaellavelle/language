@@ -7,8 +7,10 @@ abdicate,false,abdicate
 abduct,false,abduct
 abet,true,abet
 abhor,true,abhor
+abide,
 abolish,false,abolish
-abolish,false,abolish
+abominate,
+adorn,
 abort,false,abort
 abound,false,abound
 abreact,false,abreact
@@ -81,6 +83,7 @@ adventure,false,adventure
 advertise,false,advertise
 advise,true,advise
 advocate,false,advocate
+aestheticise,false,aestheticise
 aestheticize,false,aestheticize
 affect,true,affect
 affiliate,false,affiliate

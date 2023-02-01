@@ -49,6 +49,10 @@ public class RegularVerbConjugatorTestBase {
             Assertions.assertEquals(entry.getValue(), conjugatedVerbsStartingWithA.get(entry.getKey()));
         }
 
+        for (Map.Entry<WordDefinitionId, RegularVerbConjugation> entry : conjugatedVerbsStartingWithA.entrySet()) {
+            Assertions.assertEquals(entry.getValue(), expectedConjugatedVerbsStartingWithA.get(entry.getKey()));
+        }
+
         Assertions.assertEquals(expectedConjugatedVerbsStartingWithA, conjugatedVerbsStartingWithA);
 
     }
