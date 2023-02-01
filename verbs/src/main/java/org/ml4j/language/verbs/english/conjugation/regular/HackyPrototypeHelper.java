@@ -102,20 +102,20 @@ public class HackyPrototypeHelper {
     private final static String EAP = E + AP;
 
 
-    public static String getTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
+    public static String getPastTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
         // Change to only return one candidate
         String doubleCandidate = addEndingForPastTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
         String notDoubleCandidate = addEndingForPastTense(verb.getWord());
         String addKForICOrACOrKEnding = addEndingForPastTense(verb.getWord() + K);
-        return getTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
+        return getPastTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
     }
 
     public static String getPresentTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
         // Change to only return one candidate
         String doubleCandidate = addEndingForPresentTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
         String notDoubleCandidate = addEndingForPresentTense(verb.getWord());
-        String addKForICOrACOrKEnding = addEndingForPresentTense(verb + K);
-        return getTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
+        String addKForICOrACOrKEnding = addEndingForPresentTense(verb.getWord() + K);
+        return getPastTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
     }
 
     private static boolean isComposite(WordDefinition verb) {
@@ -142,7 +142,7 @@ public class HackyPrototypeHelper {
         }
     }
 
-    private static String getTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition wordDefinition, String doubleCandidate, String notDoubleCandidate, String addKForICOrACOrKEnding) {
+    private static String getPastTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition wordDefinition, String doubleCandidate, String notDoubleCandidate, String addKForICOrACOrKEnding) {
         // Change to only return one candidate
         String verb = wordDefinition.getWord();
         if (verb.length() < 2) {
@@ -162,7 +162,7 @@ public class HackyPrototypeHelper {
                 String delimiter = suffixStringIncludingDelimiter.substring(0, secondWordComponentIndex);
 
                 WordDefinition suffix = getWordDefinition(allWords, suffixString);
-                return prefix + delimiter + getTenseCandidate(allWords, suffix, doubleCandidate.substring(prefix.length() + delimiter.length()), notDoubleCandidate.substring(prefix.length() + delimiter.length()), addKForICOrACOrKEnding.substring(prefix.length() + delimiter.length()));
+                return prefix + delimiter + getPastTenseCandidate(allWords, suffix, doubleCandidate.substring(prefix.length() + delimiter.length()), notDoubleCandidate.substring(prefix.length() + delimiter.length()), addKForICOrACOrKEnding.substring(prefix.length() + delimiter.length()));
             } else {
                 throw new IllegalStateException("Invalid prefix");
             }
