@@ -44,3 +44,5 @@ anaesthetize,past_tense=anaesthetized,present_participle=anaesthetizing
 Does this now apply to all of this ise/ize verbs? (eg. demonise - from looking at this one perhaps it does?)
 
 How about yse/yze verbs (eg. analyse/analyze).  These are listed as two separate entries.
+
+* Add support for French-appropriated words like flambe, saute
