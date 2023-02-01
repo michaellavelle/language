@@ -21,7 +21,7 @@ for doubling letters says not to double the final letter if it's "x".
 
 * Think about how to handle multiple variations of spelling for present participles:
 
-(eg. cache: caching, cacheing or eye: eyeing, eying)
+(eg. cache: caching, cacheing or eye: eyeing, eying, or twinge: twinging, twingeing)
 
 
 * Think about how to handle multiple variations of spelling for present participles,
