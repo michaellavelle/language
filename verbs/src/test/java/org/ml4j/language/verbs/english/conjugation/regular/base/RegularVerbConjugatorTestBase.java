@@ -33,7 +33,10 @@ public class RegularVerbConjugatorTestBase {
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_P_FILE_PATH = "/english/regular/en_UK/regular_verbs_p_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Q_FILE_PATH = "/english/regular/en_UK/regular_verbs_q_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_R_FILE_PATH = "/english/regular/en_UK/regular_verbs_r_conjugations.csv";
-
+    protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_V_FILE_PATH = "/english/regular/en_UK/regular_verbs_v_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_X_FILE_PATH = "/english/regular/en_UK/regular_verbs_x_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Y_FILE_PATH = "/english/regular/en_UK/regular_verbs_y_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Z_FILE_PATH = "/english/regular/en_UK/regular_verbs_z_conjugations.csv";
 
     private List<String> getValuesFromVariables(List<String> csvVariables, String key, boolean required) {
         String prefix = key + "=";
