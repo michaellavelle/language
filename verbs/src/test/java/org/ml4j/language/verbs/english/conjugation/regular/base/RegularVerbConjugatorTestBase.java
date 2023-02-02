@@ -27,6 +27,7 @@ public class RegularVerbConjugatorTestBase {
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_J_FILE_PATH = "/english/regular/en_UK/regular_verbs_j_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_K_FILE_PATH = "/english/regular/en_UK/regular_verbs_k_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_L_FILE_PATH = "/english/regular/en_UK/regular_verbs_l_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_M_FILE_PATH = "/english/regular/en_UK/regular_verbs_m_conjugations.csv";
 
 
     private List<String> getValuesFromVariables(List<String> csvVariables, String key, boolean required) {

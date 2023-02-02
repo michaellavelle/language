@@ -1,5 +1,8 @@
 sensitise,false,sensitise
+shape,true,shape
 stab,true,stab
 stabilise,false,stabilise
 stalk,true,stalk
+state,true,state
+step,true,step
 stigmatise,false,stigmatise
