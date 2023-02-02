@@ -45,4 +45,4 @@ Does this now apply to all of this ise/ize verbs? (eg. demonise - from looking a
 
 How about yse/yze verbs (eg. analyse/analyze).  These are listed as two separate entries.
 
-* Add support for French-appropriated words like flambe, saute
+* Add support for French-appropriated verbs like flambe, saute, or German/US like pretzel ( which behave differently)

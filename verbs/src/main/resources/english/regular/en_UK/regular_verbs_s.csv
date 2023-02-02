@@ -1,6 +1,9 @@
+screen,true,screen
+scribe,true,scribe
 sensitise,false,sensitise
 shape,true,shape
 shadow,false,shadow
+shop,true,shop
 simplify,false,simplify
 source,true,source
 sprint,true,sprint
