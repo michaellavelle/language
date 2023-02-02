@@ -136,8 +136,11 @@ public class HackyPrototypeHelper {
         /// TODO make more efficient
         List<WordDefinition> matching = wordDefinitions.values().stream().filter(w -> w.getWord().equals(word)).collect(Collectors.toList());
         if (matching.size() != 1) {
-            throw new IllegalStateException("Not found unique definition for:" + word);
-        } else {
+            if (matching.size() > 1) {
+                throw new IllegalStateException("Not found: unique definition for:" + word);
+            } else {
+                throw new IllegalStateException("Not found: definition for:" + word);
+            }        } else {
             return matching.get(0);
         }
     }

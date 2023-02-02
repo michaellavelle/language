@@ -1,6 +1,15 @@
 pan,true,pan
+pace,true,pace
+perform,true,perform
 place,true,place
 play,true,play
+point,true,point
+police,true,police
+pour,true,pour
+power,false,power
 politicise,false,politicise
 populate,false,populate
+price,true,price
 prioritise,false,prioritise
+produce,true,produce
+protect,true,produce
