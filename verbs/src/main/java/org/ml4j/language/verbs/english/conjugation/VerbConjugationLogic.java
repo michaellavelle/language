@@ -112,9 +112,9 @@ public class VerbConjugationLogic {
     }
 
     public static String getPresentParticiple(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
-        String doubleCandidate = addEndingForPresentTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
-        String notDoubleCandidate = addEndingForPresentTense(verb.getWord());
-        String addKForICOrACOrKEnding = addEndingForPresentTense(verb.getWord() + K);
+        String doubleCandidate = addEndingForPresentParticiple(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
+        String notDoubleCandidate = addEndingForPresentParticiple(verb.getWord());
+        String addKForICOrACOrKEnding = addEndingForPresentParticiple(verb.getWord() + K);
         return getConjugation(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
     }
 
@@ -307,7 +307,7 @@ public class VerbConjugationLogic {
         }
     }
 
-    private static String addEndingForPresentTense(String verb) {
+    private static String addEndingForPresentParticiple(String verb) {
         if (verb.endsWith(MIE)) {
             return verb + ING;
         } else if (verb.endsWith(IE)) {
