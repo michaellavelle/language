@@ -42,12 +42,17 @@ public class IrregularVerbConjugatorTestBase {
 
         SortedMap<WordDefinitionId, IrregularVerbConjugation> conjugatedVerbsStartingWithA = irregularVerbConjugator.getConjugatedVerbs(verbs);
 
-        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA.size(), conjugatedVerbsStartingWithA.size());
 
         for (Map.Entry<WordDefinitionId, IrregularVerbConjugation> entry : expectedConjugatedVerbsStartingWithA.entrySet()) {
-            System.out.println(entry.getKey());
             Assertions.assertEquals(entry.getValue(), conjugatedVerbsStartingWithA.get(entry.getKey()));
         }
+
+        for (Map.Entry<WordDefinitionId, IrregularVerbConjugation> entry : conjugatedVerbsStartingWithA.entrySet()) {
+            Assertions.assertEquals(entry.getValue(), expectedConjugatedVerbsStartingWithA.get(entry.getKey()));
+        }
+
+        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA.size(), conjugatedVerbsStartingWithA.size());
+
 
         Assertions.assertEquals(expectedConjugatedVerbsStartingWithA, conjugatedVerbsStartingWithA);
 

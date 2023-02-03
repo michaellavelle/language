@@ -33,6 +33,7 @@ public class RegularVerbConjugatorTestBase {
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_P_FILE_PATH = "/english/regular/en_UK/regular_verbs_p_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Q_FILE_PATH = "/english/regular/en_UK/regular_verbs_q_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_R_FILE_PATH = "/english/regular/en_UK/regular_verbs_r_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_S_FILE_PATH = "/english/regular/en_UK/regular_verbs_s_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_T_FILE_PATH = "/english/regular/en_UK/regular_verbs_t_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_U_FILE_PATH = "/english/regular/en_UK/regular_verbs_u_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_V_FILE_PATH = "/english/regular/en_UK/regular_verbs_v_conjugations.csv";
@@ -62,7 +63,6 @@ public class RegularVerbConjugatorTestBase {
 
         SortedMap<WordDefinitionId, RegularVerbConjugation> conjugatedVerbsStartingWithA = regularVerbConjugator.getConjugatedVerbs(verbs);
 
-        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA.size(), conjugatedVerbsStartingWithA.size());
 
         for (Map.Entry<WordDefinitionId, RegularVerbConjugation> entry : expectedConjugatedVerbsStartingWithA.entrySet()) {
             Assertions.assertEquals(entry.getValue(), conjugatedVerbsStartingWithA.get(entry.getKey()));
@@ -72,6 +72,8 @@ public class RegularVerbConjugatorTestBase {
             Assertions.assertEquals(entry.getValue(), expectedConjugatedVerbsStartingWithA.get(entry.getKey()));
         }
 
+        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA.size(), conjugatedVerbsStartingWithA.size());
+        
         Assertions.assertEquals(expectedConjugatedVerbsStartingWithA, conjugatedVerbsStartingWithA);
 
     }
