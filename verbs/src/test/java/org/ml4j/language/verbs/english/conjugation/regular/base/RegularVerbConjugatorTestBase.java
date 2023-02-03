@@ -33,6 +33,7 @@ public class RegularVerbConjugatorTestBase {
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_P_FILE_PATH = "/english/regular/en_UK/regular_verbs_p_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Q_FILE_PATH = "/english/regular/en_UK/regular_verbs_q_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_R_FILE_PATH = "/english/regular/en_UK/regular_verbs_r_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_T_FILE_PATH = "/english/regular/en_UK/regular_verbs_t_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_U_FILE_PATH = "/english/regular/en_UK/regular_verbs_u_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_V_FILE_PATH = "/english/regular/en_UK/regular_verbs_v_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_W_FILE_PATH = "/english/regular/en_UK/regular_verbs_w_conjugations.csv";
