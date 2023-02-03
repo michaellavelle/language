@@ -1,6 +1,7 @@
 
 package org.ml4j.language.verbs.english.conjugation;
 
+import org.ml4j.language.verbs.english.EnglishWordsEnUK;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
@@ -104,13 +105,35 @@ public class VerbConjugationLogic {
 
     private final static String EAP = E + AP;
 
-    public static String getPastTense(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
-        String doubleCandidate = addEndingForPastTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
-        String notDoubleCandidate = addEndingForPastTense(verb.getWord());
-        String addKForICOrACOrKEnding = addEndingForPastTense(verb.getWord() + K);
-        return getConjugation(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
+    /**
+     * The Past tense for regular verbs (so far) can be derived using a sequence of rules.
+     *
+     * This method can only be applied to regular verbs
+     *
+     * @param allWords All words in the dictionary ( regular verbs, irregular verbs, and miscellaneous words)
+     * @param verb The verb to obtain the past tense for.
+     * @return The past tense
+     */
+    public static String getPastTenseForRegularVerb(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
+        if (EnglishWordsEnUK.ALL_REGULAR_VERBS.containsKey(verb.getWordDefinitionId())) {
+            String doubleCandidate = addEndingForPastTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
+            String notDoubleCandidate = addEndingForPastTense(verb.getWord());
+            String addKForICOrACOrKEnding = addEndingForPastTense(verb.getWord() + K);
+            return getConjugation(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
+        } else {
+            throw new IllegalArgumentException("Verb is not regular:" + verb);
+        }
     }
 
+    /**
+     * The Present Participle tense any verb, regular or irregular (so far, and excluding "to be") can be derived using a sequence of rules.
+     *
+     * This method can be applied to both regular or irregular verbs ( excluding "to be")
+     *
+     * @param allWords All words in the dictionary ( regular verbs, irregular verbs, and miscellaneous words)
+     * @param verb The verb to obtain the past tense for.
+     * @return The present participle
+     */
     public static String getPresentParticiple(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
         String doubleCandidate = addEndingForPresentParticiple(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
         String notDoubleCandidate = addEndingForPresentParticiple(verb.getWord());

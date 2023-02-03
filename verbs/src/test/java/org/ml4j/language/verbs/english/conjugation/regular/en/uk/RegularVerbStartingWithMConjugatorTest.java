@@ -8,7 +8,7 @@ public class RegularVerbStartingWithMConjugatorTest extends RegularVerbConjugato
 
     @Test
     public void testRegularVerbConjugation() {
-        testRegularVerbConjugation(EnglishWordsEnUK.VERBS_STARTING_WITH_M, EXPECTED_CONJUGATED_VERBS_STARTING_WITH_M_FILE_PATH);
+        testRegularVerbConjugation(EnglishWordsEnUK.REGULAR_VERBS_STARTING_WITH_M, EXPECTED_CONJUGATED_VERBS_STARTING_WITH_M_FILE_PATH);
     }
 
 }

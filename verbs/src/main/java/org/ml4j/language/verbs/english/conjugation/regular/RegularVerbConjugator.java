@@ -34,7 +34,7 @@ public class RegularVerbConjugator implements VerbConjugator<RegularVerbConjugat
 
     @Override
     public RegularVerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
-        String pastTense = VerbConjugationLogic.getPastTense(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
+        String pastTense = VerbConjugationLogic.getPastTenseForRegularVerb(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
         String presentParticiple = VerbConjugationLogic.getPresentParticiple(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
         return new RegularVerbConjugation(verbDefinition.getWord(), verbDefinition.getWordDefinitionId().getMeaningId(), pastTense, presentParticiple);
     }

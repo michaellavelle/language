@@ -60,6 +60,7 @@ public class WordDefinition {
     @Override
     public String toString() {
         return "WordDefinition{" +
+                "wordDefinitionId=" + wordDefinitionId +
                 ", stressOnLastSyllable=" + stressOnLastSyllable +
                 ", components=" + components +
                 '}';
