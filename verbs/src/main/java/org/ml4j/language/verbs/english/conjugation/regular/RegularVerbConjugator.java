@@ -33,7 +33,7 @@ public class RegularVerbConjugator implements VerbConjugator<RegularVerbConjugat
 
     @Override
     public RegularVerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
-        String pastTense = HackyPrototypeHelper.getPastTenseCandidate(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
+        String pastTense = HackyPrototypeHelper.getTenseCandidate(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
         String presentParticiple = HackyPrototypeHelper.getPresentTenseCandidate(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
         return new RegularVerbConjugation(verbDefinition.getWord(), verbDefinition.getWordDefinitionId().getMeaningId(), pastTense, presentParticiple);
     }

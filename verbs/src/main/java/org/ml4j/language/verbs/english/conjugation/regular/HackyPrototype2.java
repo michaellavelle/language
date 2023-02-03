@@ -1,12 +1,11 @@
 
 package org.ml4j.language.verbs.english.conjugation.regular;
 
+import org.ml4j.language.verbs.english.EnglishWordsEnUK;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -23,7 +22,7 @@ import java.util.stream.Collectors;
  *
  * @author Michael Lavelle
  */
-public class HackyPrototypeHelper {
+public class HackyPrototype2 {
 
     private final static List<String> TEMPORARY_EXCLUSIONS = Arrays.asList("cache", "saute", "flambe", "coif", "pretzel");
 
@@ -102,12 +101,28 @@ public class HackyPrototypeHelper {
     private final static String EAP = E + AP;
 
 
-    public static String getTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
+    public static void main(String[] args) {
+
+        SortedMap<WordDefinitionId, WordDefinition> allWordDefinitions = EnglishWordsEnUK.ALL_WORDS;
+
+
+        for (WordDefinition verb : EnglishWordsEnUK.IRREGULAR_VERBS_TYPE_1.values()) {
+            if (!TEMPORARY_EXCLUSIONS.contains(verb)) {
+
+                String pastTenseCandidate = getPastTenseCandidate(allWordDefinitions, verb);
+                String presentTenseCandidate = getPresentTenseCandidate(allWordDefinitions, verb);
+
+                System.out.println(verb.getWord() + ",past_tense=" + pastTenseCandidate + ",present_participle=" + presentTenseCandidate);
+            }
+        }
+    }
+
+    public static String getPastTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
         // Change to only return one candidate
         String doubleCandidate = addEndingForPastTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
         String notDoubleCandidate = addEndingForPastTense(verb.getWord());
         String addKForICOrACOrKEnding = addEndingForPastTense(verb.getWord() + K);
-        return getTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
+        return getPastTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
     }
 
     public static String getPresentTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
@@ -115,7 +130,7 @@ public class HackyPrototypeHelper {
         String doubleCandidate = addEndingForPresentTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
         String notDoubleCandidate = addEndingForPresentTense(verb.getWord());
         String addKForICOrACOrKEnding = addEndingForPresentTense(verb.getWord() + K);
-        return getTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
+        return getPastTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
     }
 
     private static boolean isComposite(WordDefinition verb) {
@@ -140,12 +155,13 @@ public class HackyPrototypeHelper {
                 throw new IllegalStateException("Not found: unique definition for:" + word);
             } else {
                 throw new IllegalStateException("Not found: definition for:" + word);
-            }        } else {
+            }
+        } else {
             return matching.get(0);
         }
     }
 
-    private static String getTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition wordDefinition, String doubleCandidate, String notDoubleCandidate, String addKForICOrACOrKEnding) {
+    private static String getPastTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition wordDefinition, String doubleCandidate, String notDoubleCandidate, String addKForICOrACOrKEnding) {
         // Change to only return one candidate
         String verb = wordDefinition.getWord();
         if (verb.length() < 2) {
@@ -165,9 +181,9 @@ public class HackyPrototypeHelper {
                 String delimiter = suffixStringIncludingDelimiter.substring(0, secondWordComponentIndex);
 
                 WordDefinition suffix = getWordDefinition(allWords, suffixString);
-                return prefix + delimiter + getTenseCandidate(allWords, suffix, doubleCandidate.substring(prefix.length() + delimiter.length()), notDoubleCandidate.substring(prefix.length() + delimiter.length()), addKForICOrACOrKEnding.substring(prefix.length() + delimiter.length()));
+                return prefix + delimiter + getPastTenseCandidate(allWords, suffix, doubleCandidate.substring(prefix.length() + delimiter.length()), notDoubleCandidate.substring(prefix.length() + delimiter.length()), addKForICOrACOrKEnding.substring(prefix.length() + delimiter.length()));
             } else {
-                throw new IllegalStateException("Invalid prefix");
+                throw new IllegalStateException("Invalid prefix for:" + wordDefinition);
             }
         }
 

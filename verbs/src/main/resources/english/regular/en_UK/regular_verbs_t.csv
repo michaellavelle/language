@@ -1,5 +1,8 @@
 tag,true,tag
+tangle,false,tangle
+tap,true,tap
 time,true,time
+threaten,false,threaten
 throne,true,throne
 tool,true,tool
 touch,true,touch

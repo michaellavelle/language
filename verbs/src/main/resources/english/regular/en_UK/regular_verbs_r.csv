@@ -39,6 +39,7 @@ rationalise,
 rattle,
 ravage,
 rave,
+ravel,
 ravish,
 raze,
 re-wet,true,re,wet
@@ -387,7 +388,7 @@ revolutionise,
 revolve,
 reward,
 rewatch,false,re,watch
-rewild,false,re,wild
+rewild,true,re,wild
 rewind,true,re,wind
 rewire,true,re,wire
 rework,false,re,work
