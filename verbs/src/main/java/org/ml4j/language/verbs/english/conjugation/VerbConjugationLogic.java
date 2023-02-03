@@ -1,9 +1,10 @@
 
-package org.ml4j.language.verbs.english.conjugation.regular;
+package org.ml4j.language.verbs.english.conjugation;
 
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -23,9 +24,11 @@ import java.util.stream.Collectors;
  *
  * @author Michael Lavelle
  */
-public class HackyPrototypeHelper {
+public class VerbConjugationLogic {
 
     private final static List<String> TEMPORARY_EXCLUSIONS = Arrays.asList("cache", "saute", "flambe", "coif", "pretzel");
+
+    public final static List<String> stressDependentWords = new ArrayList<>();
 
     private final static String O = "o";
     private final static String A = "a";
@@ -101,34 +104,32 @@ public class HackyPrototypeHelper {
 
     private final static String EAP = E + AP;
 
-
-    public static String getTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
-        // Change to only return one candidate
+    public static String getPastTense(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
         String doubleCandidate = addEndingForPastTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
         String notDoubleCandidate = addEndingForPastTense(verb.getWord());
         String addKForICOrACOrKEnding = addEndingForPastTense(verb.getWord() + K);
-        return getTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
+        return getConjugation(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
     }
 
-    public static String getPresentTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
-        // Change to only return one candidate
+    public static String getPresentParticiple(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
         String doubleCandidate = addEndingForPresentTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
         String notDoubleCandidate = addEndingForPresentTense(verb.getWord());
         String addKForICOrACOrKEnding = addEndingForPresentTense(verb.getWord() + K);
-        return getTenseCandidate(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
+        return getConjugation(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
     }
 
     private static boolean isComposite(WordDefinition verb) {
-        // TODO
         return verb.getComponents().size() > 1;
     }
 
     private static boolean isStressOnLastSyllable(WordDefinition verb) {
+        if (!stressDependentWords.contains(verb.getWord())) {
+            stressDependentWords.add(verb.getWord());
+        }
         return verb.isStressOnLastSyllable();
     }
 
     private static String getCompositePrefix(WordDefinition verb) {
-        // TODO
         return verb.getComponents().get(0);
     }
 
@@ -145,8 +146,7 @@ public class HackyPrototypeHelper {
         }
     }
 
-    private static String getTenseCandidate(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition wordDefinition, String doubleCandidate, String notDoubleCandidate, String addKForICOrACOrKEnding) {
-        // Change to only return one candidate
+    private static String getConjugation(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition wordDefinition, String doubleCandidate, String notDoubleCandidate, String addKForICOrACOrKEnding) {
         String verb = wordDefinition.getWord();
         if (verb.length() < 2) {
             throw new IllegalStateException("Verbs must be at least two letters");
@@ -165,7 +165,7 @@ public class HackyPrototypeHelper {
                 String delimiter = suffixStringIncludingDelimiter.substring(0, secondWordComponentIndex);
 
                 WordDefinition suffix = getWordDefinition(allWords, suffixString);
-                return prefix + delimiter + getTenseCandidate(allWords, suffix, doubleCandidate.substring(prefix.length() + delimiter.length()), notDoubleCandidate.substring(prefix.length() + delimiter.length()), addKForICOrACOrKEnding.substring(prefix.length() + delimiter.length()));
+                return prefix + delimiter + getConjugation(allWords, suffix, doubleCandidate.substring(prefix.length() + delimiter.length()), notDoubleCandidate.substring(prefix.length() + delimiter.length()), addKForICOrACOrKEnding.substring(prefix.length() + delimiter.length()));
             } else {
                 throw new IllegalStateException("Invalid prefix");
             }
@@ -173,7 +173,6 @@ public class HackyPrototypeHelper {
 
         String verbLastLetter = verb.substring(verb.length() - 1);
         String verbLastTwoLetters = verb.substring(verb.length() - 2);
-
 
         if (verbLastLetter.equals("c")) {
             if (verb.endsWith(IC) || verb.endsWith(AC)) {

@@ -15,7 +15,7 @@ package org.ml4j.language.verbs.english.conjugation.irregular;
 
 import org.ml4j.language.verbs.english.EnglishWordsEnUK;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugator;
-import org.ml4j.language.verbs.english.conjugation.regular.HackyPrototypeHelper;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugationLogic;
 import org.ml4j.language.verbs.english.conjugation.util.VerbConjugationCSVReader;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
@@ -55,15 +55,14 @@ public class IrregularVerbConjugator implements VerbConjugator<IrregularVerbConj
     public IrregularVerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
         IrregularVerbConjugation matched = conjugations.get(verbDefinition.getWordDefinitionId());
 
-        // TODO - TEMP
-        String presentParticiple = HackyPrototypeHelper.getPresentTenseCandidate(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
+        String presentParticiple = VerbConjugationLogic.getPresentParticiple(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
         if (matched == null) {
-            throw new IllegalStateException("No present participle calculatable for:" + verbDefinition.getWordDefinitionId());
+            throw new IllegalStateException("Unable to calculate present participle for:" + verbDefinition.getWordDefinitionId());
         }
         if (matched.getPresentParticiples().size() > 1) {
             throw new UnsupportedOperationException("Multiple present participles not yet supported");
         } else if (matched.getPresentParticiples().isEmpty()) {
-            throw new IllegalStateException("No present participle calculatable for:" + verbDefinition.getWordDefinitionId());
+            throw new IllegalStateException("Unable to calculate present participle for:" + verbDefinition.getWordDefinitionId());
         } else {
             if (!matched.getPresentParticiples().get(0).equals(presentParticiple)) {
                 throw new IllegalStateException("Calculated present participle does not match defined present participle:" + verbDefinition.getWordDefinitionId() + ":" + matched.getPresentParticiples().get(0) + ":" + presentParticiple);

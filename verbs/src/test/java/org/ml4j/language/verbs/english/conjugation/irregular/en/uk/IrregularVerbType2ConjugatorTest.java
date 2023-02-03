@@ -1,4 +1,4 @@
-package org.ml4j.language.verbs.english.conjugation.irregular;
+package org.ml4j.language.verbs.english.conjugation.irregular.en.uk;
 
 import org.junit.jupiter.api.Test;
 import org.ml4j.language.verbs.english.EnglishWordsEnUK;
