@@ -1,7 +1,7 @@
 
 package org.ml4j.language.verbs.english.conjugation;
 
-import org.ml4j.language.verbs.english.EnglishWordsEnUK;
+import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
@@ -115,7 +115,7 @@ public class VerbConjugationLogic {
      * @return The past tense
      */
     public static String getPastTenseForRegularVerb(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
-        if (EnglishWordsEnUK.ALL_REGULAR_VERBS.containsKey(verb.getWordDefinitionId())) {
+        if (EnglishWordsEnGB.ALL_REGULAR_VERBS.containsKey(verb.getWordDefinitionId())) {
             String doubleCandidate = addEndingForPastTense(verb.getWord() + verb.getWord().substring(verb.getWord().length() - 1));
             String notDoubleCandidate = addEndingForPastTense(verb.getWord());
             String addKForICOrACOrKEnding = addEndingForPastTense(verb.getWord() + K);

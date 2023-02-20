@@ -13,7 +13,7 @@
  */
 package org.ml4j.language.verbs.english.conjugation.irregular;
 
-import org.ml4j.language.verbs.english.EnglishWordsEnUK;
+import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugator;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugationLogic;
 import org.ml4j.language.verbs.english.conjugation.util.VerbConjugationCSVReader;
@@ -55,7 +55,7 @@ public class IrregularVerbConjugator implements VerbConjugator<IrregularVerbConj
     public IrregularVerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
         IrregularVerbConjugation matched = conjugations.get(verbDefinition.getWordDefinitionId());
 
-        String presentParticiple = VerbConjugationLogic.getPresentParticiple(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
+        String presentParticiple = VerbConjugationLogic.getPresentParticiple(EnglishWordsEnGB.ALL_WORDS, verbDefinition);
         if (matched == null) {
             throw new IllegalStateException("Unable to calculate present participle for:" + verbDefinition.getWordDefinitionId());
         }

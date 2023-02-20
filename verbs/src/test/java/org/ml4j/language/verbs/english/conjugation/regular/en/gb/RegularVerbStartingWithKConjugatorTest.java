@@ -1,14 +1,14 @@
-package org.ml4j.language.verbs.english.conjugation.regular.en.uk;
+package org.ml4j.language.verbs.english.conjugation.regular.en.gb;
 
 import org.junit.jupiter.api.Test;
-import org.ml4j.language.verbs.english.EnglishWordsEnUK;
+import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.regular.base.RegularVerbConjugatorTestBase;
 
 public class RegularVerbStartingWithKConjugatorTest extends RegularVerbConjugatorTestBase {
 
     @Test
     public void testRegularVerbConjugation() {
-        testRegularVerbConjugation(EnglishWordsEnUK.REGULAR_VERBS_STARTING_WITH_K, EXPECTED_CONJUGATED_VERBS_STARTING_WITH_K_FILE_PATH);
+        testRegularVerbConjugation(EnglishWordsEnGB.REGULAR_VERBS_STARTING_WITH_K, EXPECTED_CONJUGATED_VERBS_STARTING_WITH_K_FILE_PATH);
     }
 
 }

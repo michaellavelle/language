@@ -13,7 +13,7 @@
  */
 package org.ml4j.language.verbs.english.conjugation.regular;
 
-import org.ml4j.language.verbs.english.EnglishWordsEnUK;
+import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugationLogic;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugator;
 import org.ml4j.language.words.WordDefinition;
@@ -34,8 +34,8 @@ public class RegularVerbConjugator implements VerbConjugator<RegularVerbConjugat
 
     @Override
     public RegularVerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
-        String pastTense = VerbConjugationLogic.getPastTenseForRegularVerb(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
-        String presentParticiple = VerbConjugationLogic.getPresentParticiple(EnglishWordsEnUK.ALL_WORDS, verbDefinition);
+        String pastTense = VerbConjugationLogic.getPastTenseForRegularVerb(EnglishWordsEnGB.ALL_WORDS, verbDefinition);
+        String presentParticiple = VerbConjugationLogic.getPresentParticiple(EnglishWordsEnGB.ALL_WORDS, verbDefinition);
         return new RegularVerbConjugation(verbDefinition.getWord(), verbDefinition.getWordDefinitionId().getMeaningId(), pastTense, presentParticiple);
     }
 

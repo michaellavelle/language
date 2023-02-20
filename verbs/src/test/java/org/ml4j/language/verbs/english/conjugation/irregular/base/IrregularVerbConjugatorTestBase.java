@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 
 public class IrregularVerbConjugatorTestBase {
 
-    protected final static String DEFINED_CONJUGATED_VERBS_TYPE_1_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_1_conjugations.csv";
-    protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_1_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_1_expected_conjugations.csv";
+    protected final static String DEFINED_CONJUGATED_VERBS_TYPE_1_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_1_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_1_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_1_expected_conjugations.csv";
 
-    protected final static String DEFINED_CONJUGATED_VERBS_TYPE_2_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_2_conjugations.csv";
-    protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_2_FILE_PATH = "/english/irregular/en_UK/irregular_verbs_type_2_expected_conjugations.csv";
+    protected final static String DEFINED_CONJUGATED_VERBS_TYPE_2_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_2_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_2_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_2_expected_conjugations.csv";
 
 
     private List<String> getValuesFromVariables(List<String> csvVariables, String key, boolean required) {
