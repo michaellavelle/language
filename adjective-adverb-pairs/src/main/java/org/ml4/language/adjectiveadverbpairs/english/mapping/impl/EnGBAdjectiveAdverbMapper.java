@@ -7,6 +7,7 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
     private final static String D = "d";
     private final static String R = "r";
     private final static String O = "o";
+    private final static String W = "w";
     private final static String A = "a";
     private final static String L = "l";
     private final static String I = "i";
@@ -21,6 +22,10 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
     private final static String RIE = R + IE;
     private final static String OY = O + Y;
     private final static String RY = R + Y;
+
+    private final static String DRY = D + RY;
+    private final static String WRY = W + RY;
+
     private final static String LE = L + E;
     private final static String LY = L + Y;
     private final static String AL = A + L;
@@ -40,6 +45,8 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
             return adjective.substring(0, adjective.length()- 1) + Y;
         } else if (adjective.endsWith(IC) && !adjective.endsWith(BLIC)) { // excludes public, but includes symbolic
             return adjective + ALLY;
+        } else if (adjective.endsWith(RY) && !adjective.endsWith(DRY) && !adjective.endsWith(WRY)) { // excludes public, but includes symbolic
+            return adjective.substring(0, adjective.length() - 1) + ILY;
         }
         else if (adjective.endsWith(Y) && !adjective.endsWith(OY) && !adjective.endsWith(RY)) {
             return adjective.substring(0, adjective.length()- 1) + ILY;
