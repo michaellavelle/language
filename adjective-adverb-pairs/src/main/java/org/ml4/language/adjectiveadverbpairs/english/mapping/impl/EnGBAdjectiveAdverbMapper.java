@@ -40,7 +40,8 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
             return adjective.substring(0, adjective.length()- 1) + Y;
         } else if (adjective.endsWith(IC) && !adjective.endsWith(BLIC)) { // excludes public, but includes symbolic
             return adjective + ALLY;
-        } else if (adjective.endsWith(Y) && !adjective.endsWith(OY) && !adjective.endsWith(RY)) {
+        }
+        else if (adjective.endsWith(Y) && !adjective.endsWith(OY) && !adjective.endsWith(RY)) {
             return adjective.substring(0, adjective.length()- 1) + ILY;
         }
         else {

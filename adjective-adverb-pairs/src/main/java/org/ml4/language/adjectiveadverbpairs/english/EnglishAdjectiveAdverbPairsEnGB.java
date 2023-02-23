@@ -21,7 +21,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 /**
- * Statically defined variables to hold the en-GB loaded collections of verbs, words etc in our vocab cache.
+ * Statically defined variables to hold the en-GB loaded collections of adjectives, adverbs, words etc in our vocab cache.
  *
  * @author Michael Lavelle
  */
@@ -194,7 +194,7 @@ public class EnglishAdjectiveAdverbPairsEnGB {
             ADVERBS_STARTING_WITH_Y_DEFINITION_FILE_PATH,
             ADVERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH
     ).load();
-    
+
     public final static SortedMap<WordDefinitionId, WordDefinition> ALL_WORDS = new TreeMap<>();
 
     static {
