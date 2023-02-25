@@ -90,7 +90,7 @@ public class CSVReader<I, T> {
     }
 
     public SortedMap<I, T> load() {
-        SortedMap<I, T> results = new TreeMap<>();
+        List<String> lines = new ArrayList<>();
         for (String resource : fileResources) {
             try (InputStream is = CSVReader.class.getResourceAsStream(resource)) {
                 try (BufferedInputStream bis = new BufferedInputStream(is)) {
@@ -99,15 +99,23 @@ public class CSVReader<I, T> {
                     while (st.hasMoreTokens()) {
                         String line = st.nextToken().trim();
                         if (!line.isEmpty()) {
-                            T mapped = getMappedLine(results, line);
-                            I id = idExtractor.apply(mapped);
-                            results.put(id, getMappedLine(results, line));
+                            lines.add(line);
                         }
                     }
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+        return processLines(lines);
+    }
+
+    private SortedMap<I, T> processLines(List<String> lines) {
+        SortedMap<I, T> results = new TreeMap<>();
+        for (String line : lines) {
+            T mapped = getMappedLine(results, line);
+            I id = idExtractor.apply(mapped);
+            results.put(id, getMappedLine(results, line));
         }
         return results;
     }

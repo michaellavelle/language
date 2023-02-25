@@ -57,7 +57,8 @@ public class AdjectiveAdverbMapperTestBase {
         adverbs = adverbs.stream().distinct().collect(Collectors.toList());
         int distinctAdjectivesSize = adjectives.size();
         Assertions.assertEquals(adjectivesSize, distinctAdjectivesSize, "Distinct adjectives list size is different from adjectives list size");
-        Assertions.assertEquals(distinctAdjectivesSize, adverbs.size(), "Distinct adjectives size is different from distinct adverbs size");
+        // Cannot check for equality here, as there are some adjectives (eg. analytic, analytical which map to the same adverb - analytically)
+        Assertions.assertTrue(distinctAdjectivesSize >= adverbs.size(), "Distinct adjectives size is less than  distinct adverbs size");
 
         AdjectiveAdverbMapper adverbMapper = new EnGBAdjectiveAdverbMapper();
 
