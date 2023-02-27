@@ -31,6 +31,9 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
 
     private final static String LE = L + E;
     private final static String LY = L + Y;
+
+    private final static String LL = L + L;
+
     private final static String AL = A + L;
     private final static String ALLY = AL + LY;
     private final static String ILY = I + LY;
@@ -58,6 +61,8 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
         }
         else if (adjective.endsWith(Y) && !adjective.endsWith(OY) && !adjective.endsWith(RY) && !adjective.endsWith(SLY)) { // slyly
             return adjective.substring(0, adjective.length()- 1) + ILY;
+        } else if (adjective.endsWith(LL)) { // full/fully
+            return adjective + Y;
         }
         else {
             return adjective + LY;
