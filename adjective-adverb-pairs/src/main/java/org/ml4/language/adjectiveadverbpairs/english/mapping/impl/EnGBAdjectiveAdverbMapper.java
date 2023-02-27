@@ -40,6 +40,9 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
 
     private final static String OLE = O + LE;
 
+    private final static String SOLE = S + OLE;
+
+
     private final static String SLY = S + LY;
 
     private final static String IC = I + C;
@@ -48,7 +51,10 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
 
     @Override
     public String getAdverbFromAdjective(String adjective) {
-        if (adjective.endsWith(DUE) || adjective.endsWith(RUE) || adjective.endsWith(RIE) || adjective.endsWith(OLE)) {
+        if (adjective.endsWith(SOLE)) {
+            // sole
+            return adjective + LY;
+        } else if (adjective.endsWith(DUE) || adjective.endsWith(RUE) || adjective.endsWith(RIE) || adjective.endsWith(OLE)) {
             // due, eerie, true, undue, whole
             return adjective.substring(0, adjective.length() - 1) + LY;
         } else if (adjective.endsWith(LE)) {
