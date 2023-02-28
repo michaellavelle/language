@@ -30,4 +30,6 @@ public interface VerbConjugation {
     List<String> getPastParticiples();
 
     List<String> getPresentParticiples();
+
+    String getPresentTense(boolean thirdPersonSingular);
 }

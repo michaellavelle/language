@@ -81,5 +81,10 @@ public abstract class VerbConjugationBase implements VerbConjugation {
         return presentParticiples;
     }
 
+    @Override
+    public String getPresentTense(boolean thirdPersonSingular) {
+        return VerbConjugationLogic.addEndingForPresentTense(verb, thirdPersonSingular);
+    }
+
 
 }

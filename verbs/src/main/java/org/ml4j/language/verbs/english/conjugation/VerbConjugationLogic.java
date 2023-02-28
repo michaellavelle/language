@@ -43,8 +43,11 @@ public class VerbConjugationLogic {
     private final static String U = "u";
     private final static String V = "v";
 
+    private final static String T = "t";
+
     private final static String B = "b";
 
+    private final static String G = "g";
 
     private final static String R = "r";
     private final static String E = "e";
@@ -73,6 +76,49 @@ public class VerbConjugationLogic {
     private final static String AL = "al";
     private final static String IL = "il";
     private final static String IT = "it";
+
+    private final static String S = "s";
+
+    private final static String H = "h";
+
+    private final static String Z = "z";
+
+    private final static String ZZ = Z + Z;
+
+    private final static String IZ = I + Z;
+
+
+    private final static String GO = G + O;
+
+    private final static String HO = H + O;
+
+    private final static String DO = D + O;
+
+
+    private final static String CH= C + H;
+
+    private final static String TH= T + H;
+
+    private final static String SH= S + H;
+
+    private final static String AY = A + Y;
+
+    private final static String EY = E + Y;
+
+    private final static String UY = U + Y;
+
+    private final static String OY = O + Y;
+
+    private final static String OO = O + O;
+
+    private final static String ES = E + S;
+
+    private final static String US = U + S;
+
+    private final static String IES = I + ES;
+
+
+    private final static String X = "x";
 
 
     private final static String MIE = M + IE;
@@ -104,6 +150,15 @@ public class VerbConjugationLogic {
     private final static String EEL = E + EL;
 
     private final static String EAP = E + AP;
+
+    private final static String SES = S + ES;
+
+    private final static String ZES = Z + ES;
+
+    private final static String ATH = A + TH;
+
+    private final static String SOOTH = S + OO + TH;
+
 
     /**
      * The Past tense for regular verbs (so far) can be derived using a sequence of rules.
@@ -140,6 +195,7 @@ public class VerbConjugationLogic {
         String addKForICOrACOrKEnding = addEndingForPresentParticiple(verb.getWord() + K);
         return getConjugation(allWords, verb, doubleCandidate, notDoubleCandidate, addKForICOrACOrKEnding);
     }
+
 
     private static boolean isComposite(WordDefinition verb) {
         return verb.getComponents().size() > 1;
@@ -327,6 +383,31 @@ public class VerbConjugationLogic {
             return verb.substring(0, verb.length() - 1) + IED;
         } else {
             return verb.endsWith(E) ? (verb + D) : (verb + ED);
+        }
+    }
+
+    public static String addEndingForPresentTense(String verb, boolean thirdPersonSingular) {
+        if (thirdPersonSingular) {
+            if (verb.endsWith(Y) && !verb.endsWith(AY) && !verb.endsWith(OY) && !verb.endsWith(EY) && !verb.endsWith(UY)) {
+                return verb.substring(0, verb.length() - 1) + IES;
+            } else {
+                if (verb.endsWith(US)) {
+                    return verb + SES;
+                } else if (verb.endsWith(IZ)) {
+                    // quiz
+                    return verb + ZES;
+                } else if (verb.endsWith(IZ)) {
+                    // quiz
+                    return verb + ZES;
+                } else if (verb.endsWith(SOOTH) || verb.endsWith(ATH) || verb.endsWith(SH) || verb.endsWith(CH) || verb.endsWith(X) || verb.endsWith(Z)
+                        || verb.endsWith(GO) || verb.endsWith(HO) || verb.endsWith(DO) || verb.endsWith(Z) || verb.endsWith(S)) {
+                    return verb + ES;
+                } else {
+                    return verb + S;
+                }
+            }
+        } else {
+            return verb;
         }
     }
 
