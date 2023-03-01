@@ -1,12 +1,13 @@
 package org.ml4j.language.verbs.english.conjugation.irregular;
 
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugationBaseParent;
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ToBeVerbConjugation implements VerbConjugation {
+public class ToBeVerbConjugation extends VerbConjugationBaseParent implements VerbConjugation {
     @Override
     public String getVerb() {
         return "be";

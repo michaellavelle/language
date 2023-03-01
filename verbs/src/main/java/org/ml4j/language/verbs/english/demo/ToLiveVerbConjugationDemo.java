@@ -1,23 +1,25 @@
 package org.ml4j.language.verbs.english.demo;
 
+import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
-import org.ml4j.language.verbs.english.conjugation.specialcases.SpecialCaseVerbConjugations;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugators;
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
 import org.ml4j.language.verbs.english.tenses.Tense;
+import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ToBeVerbConjugationDemo {
+public class ToLiveVerbConjugationDemo {
 
     public static void main(String[] args) {
 
         // Add all verb-related words (so far) to a list, and then remove duplicates
         List<String> verbRelatedWords = new ArrayList<>();
 
-        VerbConjugation iRegularVerbConjugation = SpecialCaseVerbConjugations.TO_BE_VERB_CONJUGATION;
+        VerbConjugation iRegularVerbConjugation = VerbConjugators.REGULAR_VERB_CONJUGATOR.getConjugatedVerb(EnglishWordsEnGB.ALL_REGULAR_VERBS.get(new WordDefinitionId("live", 1)));
 
         verbRelatedWords.add(iRegularVerbConjugation.getVerb());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());

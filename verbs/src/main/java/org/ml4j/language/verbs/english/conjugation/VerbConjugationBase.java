@@ -14,6 +14,7 @@
 package org.ml4j.language.verbs.english.conjugation;
 
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
+import org.ml4j.language.verbs.english.tenses.Tense;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.Objects;
  *
  * @author Michael Lavelle
  */
-public abstract class VerbConjugationBase implements VerbConjugation {
+public abstract class VerbConjugationBase extends VerbConjugationBaseParent implements VerbConjugation {
 
     protected String verb;
     protected int meaningId;
@@ -87,6 +88,5 @@ public abstract class VerbConjugationBase implements VerbConjugation {
     public String getPresentTense(SubjectType subjectType) {
         return VerbConjugationLogic.getPresentTense(verb, subjectType);
     }
-
 
 }

@@ -14,6 +14,7 @@
 package org.ml4j.language.verbs.english.conjugation;
 
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
+import org.ml4j.language.verbs.english.tenses.Tense;
 
 import java.util.List;
 
@@ -34,4 +35,10 @@ public interface VerbConjugation {
     List<String> getPresentParticiples();
 
     String getPresentTense(SubjectType thirdPersonSingular);
+
+    List<String> conjugateVerb(SubjectType subjectType, Tense tense, boolean verbOnly);
+
+    List<String> conjugateVerb(String subjectName, SubjectType subjectType, Tense tense);
+
+
 }
