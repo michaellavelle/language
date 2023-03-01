@@ -8,6 +8,6 @@ public class EnglishAdverbsWithoutAdjectivesEnGBTest {
 
     @Test
     public void testAdverbLoad() {
-        Assertions.assertEquals(46, EnglishAdverbsWithoutAdjectivesEnGB.ALL_ADVERBS.keySet().size());
+        Assertions.assertEquals(47, EnglishAdverbsWithoutAdjectivesEnGB.ALL_ADVERBS.keySet().size());
     }
 }
