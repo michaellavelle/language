@@ -1,6 +1,7 @@
 package org.ml4j.language.verbs.english.conjugation.regular.base;
 
-import org.junit.jupiter.api.Assertions;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugators;
+import org.ml4j.language.verbs.english.conjugation.base.VerbConjugatorTestBase;
 import org.ml4j.language.verbs.english.conjugation.regular.RegularVerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.regular.RegularVerbConjugator;
 import org.ml4j.language.verbs.english.conjugation.util.VerbConjugationCSVReader;
@@ -8,12 +9,9 @@ import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.SortedMap;
-import java.util.stream.Collectors;
 
-public class RegularVerbConjugatorTestBase {
+public class RegularVerbConjugatorTestBase extends VerbConjugatorTestBase {
 
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_A_FILE_PATH = "/english/regular/en-GB/regular_verbs_a_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_B_FILE_PATH = "/english/regular/en-GB/regular_verbs_b_conjugations.csv";
@@ -42,39 +40,15 @@ public class RegularVerbConjugatorTestBase {
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Y_FILE_PATH = "/english/regular/en-GB/regular_verbs_y_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Z_FILE_PATH = "/english/regular/en-GB/regular_verbs_z_conjugations.csv";
 
-    private List<String> getValuesFromVariables(List<String> csvVariables, String key, boolean required) {
-        String prefix = key + "=";
-        List<String> candidates = csvVariables.stream().filter(v -> v.startsWith(prefix)).collect(Collectors.toList());
-        if (required && candidates.isEmpty()) {
-            throw new IllegalStateException("No value defined for key:" + key + " within:" + csvVariables);
-        } else {
-            return candidates.stream().map(v -> v.substring(prefix.length())).collect(Collectors.toList());
-        }
-    }
+    protected void testVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePath) {
 
-    protected void testRegularVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePath) {
+        RegularVerbConjugator regularVerbConjugator = VerbConjugators.REGULAR_VERB_CONJUGATOR;
 
-        RegularVerbConjugator regularVerbConjugator = new RegularVerbConjugator();
-
-        SortedMap<WordDefinitionId, RegularVerbConjugation> expectedConjugatedVerbsStartingWithA =
+        SortedMap<WordDefinitionId, RegularVerbConjugation> expectedConjugatedVerbs =
                 new VerbConjugationCSVReader<>((i, v) ->
                         new RegularVerbConjugation(v.get(0), i.getMeaningId(), getValuesFromVariables(v, "past_tense", false), getValuesFromVariables(v, "present_participle", true)),
                         false, Arrays.asList(expectedResultsFilePath)).load();
 
-        SortedMap<WordDefinitionId, RegularVerbConjugation> conjugatedVerbsStartingWithA = regularVerbConjugator.getConjugatedVerbs(verbs);
-
-
-        for (Map.Entry<WordDefinitionId, RegularVerbConjugation> entry : expectedConjugatedVerbsStartingWithA.entrySet()) {
-            Assertions.assertEquals(entry.getValue(), conjugatedVerbsStartingWithA.get(entry.getKey()));
-        }
-
-        for (Map.Entry<WordDefinitionId, RegularVerbConjugation> entry : conjugatedVerbsStartingWithA.entrySet()) {
-            Assertions.assertEquals(entry.getValue(), expectedConjugatedVerbsStartingWithA.get(entry.getKey()));
-        }
-
-        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA.size(), conjugatedVerbsStartingWithA.size());
-        
-        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA, conjugatedVerbsStartingWithA);
-
+        testVerbConjugation(regularVerbConjugator, expectedConjugatedVerbs, verbs);
     }
 }

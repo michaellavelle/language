@@ -13,6 +13,8 @@
  */
 package org.ml4j.language.verbs.english.conjugation;
 
+import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
+
 import java.util.List;
 
 /**
@@ -25,11 +27,11 @@ public interface VerbConjugation {
 
     int getMeaningId();
 
-    List<String> getPastTenses();
+    List<String> getPastTenses(SubjectType thirdPersonSingular);
 
     List<String> getPastParticiples();
 
     List<String> getPresentParticiples();
 
-    String getPresentTense(boolean thirdPersonSingular);
+    String getPresentTense(SubjectType thirdPersonSingular);
 }

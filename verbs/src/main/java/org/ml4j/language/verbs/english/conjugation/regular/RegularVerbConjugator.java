@@ -14,42 +14,22 @@
 package org.ml4j.language.verbs.english.conjugation.regular;
 
 import org.ml4j.language.verbs.english.EnglishWordsEnGB;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugationLogic;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugator;
 import org.ml4j.language.words.WordDefinition;
-import org.ml4j.language.words.WordDefinitionId;
-
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 /**
  * Default implementation for regular verb conjugation service.
  *
  * @author Michael Lavelle
  */
-public class RegularVerbConjugator implements VerbConjugator<RegularVerbConjugation> {
+public class RegularVerbConjugator implements VerbConjugator<VerbConjugation> {
 
     @Override
-    public RegularVerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
+    public VerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
         String pastTense = VerbConjugationLogic.getPastTenseForRegularVerb(EnglishWordsEnGB.ALL_WORDS, verbDefinition);
         String presentParticiple = VerbConjugationLogic.getPresentParticiple(EnglishWordsEnGB.ALL_WORDS, verbDefinition);
         return new RegularVerbConjugation(verbDefinition.getWord(), verbDefinition.getWordDefinitionId().getMeaningId(), pastTense, presentParticiple);
-    }
-
-    @Override
-    public List<RegularVerbConjugation> getConjugatedVerbs(List<WordDefinition> verbDefinition) {
-        return verbDefinition.stream().map(v -> getConjugatedVerb(v)).collect(Collectors.toList());
-    }
-
-    @Override
-    public SortedMap<WordDefinitionId, RegularVerbConjugation> getConjugatedVerbs(SortedMap<WordDefinitionId, WordDefinition> verbDefinitions) {
-        SortedMap<WordDefinitionId, RegularVerbConjugation> results = new TreeMap<>();
-        for (Map.Entry<WordDefinitionId, WordDefinition> entry : verbDefinitions.entrySet()) {
-            results.put(entry.getKey(), getConjugatedVerb(entry.getValue()));
-        }
-        return results;
     }
 }

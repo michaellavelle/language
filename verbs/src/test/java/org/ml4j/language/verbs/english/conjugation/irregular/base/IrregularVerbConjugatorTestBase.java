@@ -1,60 +1,27 @@
 package org.ml4j.language.verbs.english.conjugation.irregular.base;
 
-import org.junit.jupiter.api.Assertions;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugators;
+import org.ml4j.language.verbs.english.conjugation.base.VerbConjugatorTestBase;
 import org.ml4j.language.verbs.english.conjugation.irregular.IrregularVerbConjugation;
-import org.ml4j.language.verbs.english.conjugation.irregular.IrregularVerbConjugator;
 import org.ml4j.language.verbs.english.conjugation.util.VerbConjugationCSVReader;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 import java.util.SortedMap;
-import java.util.stream.Collectors;
 
-public class IrregularVerbConjugatorTestBase {
+public class IrregularVerbConjugatorTestBase extends VerbConjugatorTestBase {
 
-    protected final static String DEFINED_CONJUGATED_VERBS_TYPE_1_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_1_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_1_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_1_expected_conjugations.csv";
-
-    protected final static String DEFINED_CONJUGATED_VERBS_TYPE_2_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_2_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_2_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_2_expected_conjugations.csv";
+    protected final static String EXPECTED_CONJUGATED_VERBS_TYPE_3_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_3_expected_conjugations.csv";
 
+    protected void testVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePath) {
 
-    private List<String> getValuesFromVariables(List<String> csvVariables, String key, boolean required) {
-        String prefix = key + "=";
-        List<String> candidates = csvVariables.stream().filter(v -> v.startsWith(prefix)).collect(Collectors.toList());
-        if (required && candidates.isEmpty()) {
-            throw new IllegalStateException("No value defined for key:" + key + " within:" + csvVariables);
-        } else {
-            return candidates.stream().map(v -> v.substring(prefix.length())).collect(Collectors.toList());
-        }
-    }
-
-    protected void testIrregularVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePath) {
-
-        IrregularVerbConjugator irregularVerbConjugator = new IrregularVerbConjugator(Arrays.asList(DEFINED_CONJUGATED_VERBS_TYPE_1_FILE_PATH, DEFINED_CONJUGATED_VERBS_TYPE_2_FILE_PATH));
-
-        SortedMap<WordDefinitionId, IrregularVerbConjugation> expectedConjugatedVerbsStartingWithA = new VerbConjugationCSVReader<>((i, v) ->
+        SortedMap<WordDefinitionId, IrregularVerbConjugation> expectedConjugatedVerbs = new VerbConjugationCSVReader<>((i, v) ->
                 new IrregularVerbConjugation(v.get(0), i.getMeaningId(), getValuesFromVariables(v, "past_tense", false), getValuesFromVariables(v, "past_participle", false), getValuesFromVariables(v, "present_participle", true)),
                 false, Arrays.asList(expectedResultsFilePath)).load();
 
-        SortedMap<WordDefinitionId, IrregularVerbConjugation> conjugatedVerbsStartingWithA = irregularVerbConjugator.getConjugatedVerbs(verbs);
-
-
-        for (Map.Entry<WordDefinitionId, IrregularVerbConjugation> entry : expectedConjugatedVerbsStartingWithA.entrySet()) {
-            Assertions.assertEquals(entry.getValue(), conjugatedVerbsStartingWithA.get(entry.getKey()));
-        }
-
-        for (Map.Entry<WordDefinitionId, IrregularVerbConjugation> entry : conjugatedVerbsStartingWithA.entrySet()) {
-            Assertions.assertEquals(entry.getValue(), expectedConjugatedVerbsStartingWithA.get(entry.getKey()));
-        }
-
-        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA.size(), conjugatedVerbsStartingWithA.size());
-
-
-        Assertions.assertEquals(expectedConjugatedVerbsStartingWithA, conjugatedVerbsStartingWithA);
-
+        testVerbConjugation(VerbConjugators.IRREGULAR_VERB_CONJUGATOR, expectedConjugatedVerbs, verbs);
     }
 }

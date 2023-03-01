@@ -14,16 +14,15 @@
 package org.ml4j.language.verbs.english.conjugation.irregular;
 
 import org.ml4j.language.verbs.english.EnglishWordsEnGB;
-import org.ml4j.language.verbs.english.conjugation.VerbConjugator;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugationLogic;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugator;
 import org.ml4j.language.verbs.english.conjugation.util.VerbConjugationCSVReader;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 /**
@@ -31,7 +30,7 @@ import java.util.stream.Collectors;
  *
  * @author Michael Lavelle
  */
-public class IrregularVerbConjugator implements VerbConjugator<IrregularVerbConjugation> {
+public class IrregularVerbConjugator implements VerbConjugator<VerbConjugation> {
 
     private Map<WordDefinitionId, IrregularVerbConjugation> conjugations;
 
@@ -52,7 +51,10 @@ public class IrregularVerbConjugator implements VerbConjugator<IrregularVerbConj
     }
 
     @Override
-    public IrregularVerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
+    public VerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
+        if (verbDefinition.getWordDefinitionId().equals(new WordDefinitionId("be", 1))) {
+            return new ToBeVerbConjugation();
+        }
         IrregularVerbConjugation matched = conjugations.get(verbDefinition.getWordDefinitionId());
 
         String presentParticiple = VerbConjugationLogic.getPresentParticiple(EnglishWordsEnGB.ALL_WORDS, verbDefinition);
@@ -69,19 +71,5 @@ public class IrregularVerbConjugator implements VerbConjugator<IrregularVerbConj
             }
         }
         return matched;
-    }
-
-    @Override
-    public List<IrregularVerbConjugation> getConjugatedVerbs(List<WordDefinition> verbDefinition) {
-        return verbDefinition.stream().map(v -> getConjugatedVerb(v)).collect(Collectors.toList());
-    }
-
-    @Override
-    public SortedMap<WordDefinitionId, IrregularVerbConjugation> getConjugatedVerbs(SortedMap<WordDefinitionId, WordDefinition> verbDefinitions) {
-        SortedMap<WordDefinitionId, IrregularVerbConjugation> results = new TreeMap<>();
-        for (Map.Entry<WordDefinitionId, WordDefinition> entry : verbDefinitions.entrySet()) {
-            results.put(entry.getKey(), getConjugatedVerb(entry.getValue()));
-        }
-        return results;
     }
 }

@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class IrregularVerbConjugation extends VerbConjugationBase implements VerbConjugation {
 
-    private List<String> pastParticiples;
+    protected List<String> pastParticiples;
 
     public IrregularVerbConjugation(String verb, int meaningId, List<String> pastTenses, List<String> pastParticiples, List<String> presentParticiples) {
         super(verb, meaningId, pastTenses, presentParticiples);
@@ -36,10 +36,10 @@ public class IrregularVerbConjugation extends VerbConjugationBase implements Ver
     @Override
     public String toString() {
         return "IrregularVerbConjugation{" +
-                "verb='" + getVerb() + '\'' +
-                ", pastTenses=" + getPastTenses() +
-                ", pastParticiples=" + getPastParticiples() +
-                ", presentParticiples=" + getPresentParticiples() +
+                "verb='" + verb + '\'' +
+                ", pastTenses=" + pastTenses +
+                ", pastParticiples=" + pastParticiples +
+                ", presentParticiples=" + presentParticiples +
                 '}';
     }
 

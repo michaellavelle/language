@@ -13,6 +13,8 @@
  */
 package org.ml4j.language.verbs.english.conjugation;
 
+import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -24,10 +26,10 @@ import java.util.Objects;
  */
 public abstract class VerbConjugationBase implements VerbConjugation {
 
-    private String verb;
-    private int meaningId;
-    private List<String> pastTenses;
-    private List<String> presentParticiples;
+    protected String verb;
+    protected int meaningId;
+    protected List<String> pastTenses;
+    protected List<String> presentParticiples;
 
     public VerbConjugationBase(String verb, int meaningId, String pastTense, String presentParticiple) {
         this.verb = verb;
@@ -73,7 +75,7 @@ public abstract class VerbConjugationBase implements VerbConjugation {
         return verb;
     }
 
-    public List<String> getPastTenses() {
+    public List<String> getPastTenses(SubjectType subjectType) {
         return pastTenses;
     }
 
@@ -82,8 +84,8 @@ public abstract class VerbConjugationBase implements VerbConjugation {
     }
 
     @Override
-    public String getPresentTense(boolean thirdPersonSingular) {
-        return VerbConjugationLogic.addEndingForPresentTense(verb, thirdPersonSingular);
+    public String getPresentTense(SubjectType subjectType) {
+        return VerbConjugationLogic.getPresentTense(verb, subjectType);
     }
 
 

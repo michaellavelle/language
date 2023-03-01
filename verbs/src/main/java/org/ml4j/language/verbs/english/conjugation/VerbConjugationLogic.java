@@ -2,6 +2,7 @@
 package org.ml4j.language.verbs.english.conjugation;
 
 import org.ml4j.language.verbs.english.EnglishWordsEnGB;
+import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
@@ -95,11 +96,11 @@ public class VerbConjugationLogic {
     private final static String DO = D + O;
 
 
-    private final static String CH= C + H;
+    private final static String CH = C + H;
 
-    private final static String TH= T + H;
+    private final static String TH = T + H;
 
-    private final static String SH= S + H;
+    private final static String SH = S + H;
 
     private final static String AY = A + Y;
 
@@ -157,16 +158,18 @@ public class VerbConjugationLogic {
 
     private final static String ATH = A + TH;
 
+    private final static String HAVE = H + A + V + E;
+
     private final static String SOOTH = S + OO + TH;
 
 
     /**
      * The Past tense for regular verbs (so far) can be derived using a sequence of rules.
-     *
+     * <p>
      * This method can only be applied to regular verbs
      *
      * @param allWords All words in the dictionary ( regular verbs, irregular verbs, and miscellaneous words)
-     * @param verb The verb to obtain the past tense for.
+     * @param verb     The verb to obtain the past tense for.
      * @return The past tense
      */
     public static String getPastTenseForRegularVerb(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
@@ -182,11 +185,11 @@ public class VerbConjugationLogic {
 
     /**
      * The Present Participle tense any verb, regular or irregular (so far, and excluding "to be") can be derived using a sequence of rules.
-     *
+     * <p>
      * This method can be applied to both regular or irregular verbs ( excluding "to be")
      *
      * @param allWords All words in the dictionary ( regular verbs, irregular verbs, and miscellaneous words)
-     * @param verb The verb to obtain the past tense for.
+     * @param verb     The verb to obtain the past tense for.
      * @return The present participle
      */
     public static String getPresentParticiple(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition verb) {
@@ -220,7 +223,8 @@ public class VerbConjugationLogic {
                 throw new IllegalStateException("Not found: unique definition for:" + word);
             } else {
                 throw new IllegalStateException("Not found: definition for:" + word);
-            }        } else {
+            }
+        } else {
             return matching.get(0);
         }
     }
@@ -386,27 +390,31 @@ public class VerbConjugationLogic {
         }
     }
 
-    public static String addEndingForPresentTense(String verb, boolean thirdPersonSingular) {
-        if (thirdPersonSingular) {
-            if (verb.endsWith(Y) && !verb.endsWith(AY) && !verb.endsWith(OY) && !verb.endsWith(EY) && !verb.endsWith(UY)) {
+    public static String getPresentTense(String verb, SubjectType subjectType) {
+        if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
+            if (verb.equals(HAVE)) {
+                // The verb to have is a special case ->  "has" for third-person singular
+                return verb.substring(0, verb.length() - 2) + S;
+            } else if (verb.endsWith(Y) && !verb.endsWith(AY) && !verb.endsWith(OY) && !verb.endsWith(EY) && !verb.endsWith(UY)) {
+                // eg. carry
                 return verb.substring(0, verb.length() - 1) + IES;
             } else {
                 if (verb.endsWith(US)) {
+                    // eg. focus - double the last s
                     return verb + SES;
                 } else if (verb.endsWith(IZ)) {
                     // quiz
                     return verb + ZES;
-                } else if (verb.endsWith(IZ)) {
-                    // quiz
-                    return verb + ZES;
-                } else if (verb.endsWith(SOOTH) || verb.endsWith(ATH) || verb.endsWith(SH) || verb.endsWith(CH) || verb.endsWith(X) || verb.endsWith(Z)
+                } else if (verb.endsWith(SOOTH) || verb.endsWith(ATH) || verb.endsWith(SH) || verb.endsWith(CH) || verb.endsWith(X)
                         || verb.endsWith(GO) || verb.endsWith(HO) || verb.endsWith(DO) || verb.endsWith(Z) || verb.endsWith(S)) {
+                    // soothe, bathe, wash, batch, box, fizz, forgo, echo, do, fuss
                     return verb + ES;
                 } else {
                     return verb + S;
                 }
             }
         } else {
+            // if not third-person singular, just return the verb
             return verb;
         }
     }

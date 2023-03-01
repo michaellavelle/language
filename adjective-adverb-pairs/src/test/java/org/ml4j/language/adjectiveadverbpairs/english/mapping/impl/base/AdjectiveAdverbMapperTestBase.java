@@ -3,6 +3,7 @@ package org.ml4j.language.adjectiveadverbpairs.english.mapping.impl.base;
 import org.junit.jupiter.api.Assertions;
 import org.ml4.language.adjectiveadverbpairs.english.EnglishAdjectiveAdverbPairsEnGB;
 import org.ml4.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbMapper;
+import org.ml4.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbPairMappers;
 import org.ml4.language.adjectiveadverbpairs.english.mapping.impl.EnGBAdjectiveAdverbMapper;
 import org.ml4j.language.adjectiveadverbpairs.mapping.util.AdjectiveAdverbPair;
 import org.ml4j.language.adjectiveadverbpairs.mapping.util.AdjectiveAdverbPairCSVReader;
@@ -60,7 +61,7 @@ public class AdjectiveAdverbMapperTestBase {
         // Cannot check for equality here, as there are some adjectives (eg. analytic, analytical which map to the same adverb - analytically)
         Assertions.assertTrue(distinctAdjectivesSize >= adverbs.size(), "Distinct adjectives size is less than  distinct adverbs size");
 
-        AdjectiveAdverbMapper adverbMapper = new EnGBAdjectiveAdverbMapper();
+        AdjectiveAdverbMapper adverbMapper = AdjectiveAdverbPairMappers.DEFAULT_ADJECTIVE_ADVERB_MAPPER;
 
         SortedMap<WordDefinitionId, AdjectiveAdverbPair> expectedMappings =
                 new AdjectiveAdverbPairCSVReader((i, v) ->

@@ -8,7 +8,7 @@ public class RegularVerbStartingWithHConjugatorTest extends RegularVerbConjugato
 
     @Test
     public void testRegularVerbConjugation() {
-        testRegularVerbConjugation(EnglishWordsEnGB.REGULAR_VERBS_STARTING_WITH_H, EXPECTED_CONJUGATED_VERBS_STARTING_WITH_H_FILE_PATH);
+        testVerbConjugation(EnglishWordsEnGB.REGULAR_VERBS_STARTING_WITH_H, EXPECTED_CONJUGATED_VERBS_STARTING_WITH_H_FILE_PATH);
     }
 
 }

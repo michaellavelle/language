@@ -36,14 +36,14 @@ public class RegularVerbConjugation extends VerbConjugationBase implements VerbC
     @Override
     public String toString() {
         return "RegularVerbConjugation{" +
-                "verb='" + getVerb() + '\'' +
-                ", pastTenses=" + getPastTenses() +
-                ", presentParticiples=" + getPresentParticiples() +
+                "verb='" + verb + '\'' +
+                ", pastTenses=" + pastTenses +
+                ", presentParticiples=" + presentParticiples +
                 '}';
     }
 
     @Override
     public List<String> getPastParticiples() {
-        return getPastTenses();
+        return getPastTenses(null);
     }
 }

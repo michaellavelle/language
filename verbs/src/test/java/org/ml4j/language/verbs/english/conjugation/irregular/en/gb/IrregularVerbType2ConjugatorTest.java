@@ -8,7 +8,7 @@ public class IrregularVerbType2ConjugatorTest extends IrregularVerbConjugatorTes
 
     @Test
     public void testRegularVerbConjugation() {
-        testIrregularVerbConjugation(EnglishWordsEnGB.IRREGULAR_VERBS_TYPE_2, EXPECTED_CONJUGATED_VERBS_TYPE_2_FILE_PATH);
+        testVerbConjugation(EnglishWordsEnGB.IRREGULAR_VERBS_TYPE_2, EXPECTED_CONJUGATED_VERBS_TYPE_2_FILE_PATH);
     }
 
 }
