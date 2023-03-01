@@ -64,13 +64,8 @@ public abstract class VerbConjugationBaseParent implements VerbConjugation{
             return Arrays.asList(WILL + " " + getVerb());
         } else if (Tense.FUTURE_PERFECT.equals(tense)){
             if (!verbOnly) {
-                List<String> haveConjugations = SpecialCaseVerbConjugations.TO_HAVE_VERB_CONJUGATION.conjugateVerb(subjectType, Tense.PRESENT_SIMPLE, true);
-                if (haveConjugations.size() != 1) {
-                    throw new UnsupportedOperationException("Must be exactly one conjugation of to have for this subject type and tense");
-                } else {
-                    String haveConjugation = haveConjugations.get(0);
-                    return getPastParticiples().stream().map(w -> WILL + " " + haveConjugation + " " + w).collect(Collectors.toList());
-                }
+                String haveInfinitive = SpecialCaseVerbConjugations.TO_HAVE_VERB_CONJUGATION.getVerb();
+                return getPastParticiples().stream().map(w -> WILL + " " + haveInfinitive + " " + w).collect(Collectors.toList());
             }
             return getPastParticiples();
         } else if (Tense.FUTURE_PERFECT_CONTINUOUS.equals(tense)){
