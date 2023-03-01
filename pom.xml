@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>language-core</module>
+        <module>adverbs-not-mapped-from-adjectives</module>
         <module>adjective-adverb-pairs</module>
         <module>verbs</module>
     </modules>
