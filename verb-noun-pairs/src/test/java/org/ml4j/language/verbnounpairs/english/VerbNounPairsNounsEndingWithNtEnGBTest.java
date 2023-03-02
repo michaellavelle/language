@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class VerbNounPairsNounsEndingWithOnEnGBTest extends VerbNounPairsNounsEndingWithEnGBTestBase {
+public class VerbNounPairsNounsEndingWithNtEnGBTest extends VerbNounPairsNounsEndingWithEnGBTestBase {
 
     @Test
     public void testVerbNounPairsLoad() {
-        testVerbNounPairsLoad("on", 694);
+        testVerbNounPairsLoad("nt", 160);
     }
 }
