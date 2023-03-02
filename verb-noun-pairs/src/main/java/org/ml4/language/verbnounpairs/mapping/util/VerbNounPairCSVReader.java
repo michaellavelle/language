@@ -17,7 +17,7 @@ public class VerbNounPairCSVReader extends CSVReader<WordDefinitionId, VerbNounP
         super((i, v) ->
                 new VerbNounPair(v.get(0), i.getMeaningId(), v.get(1)),
                 c -> new WordDefinitionId(c.getVerb(), c.getVerbOccurrenceId()),
-                (r, v) -> new WordDefinitionId(v.get(1), getNounMeaningId(r, v.get(1))),
+                (r, v) -> new WordDefinitionId(v.get(0), getVerbOccurrenceId(r, v.get(0))),
                 firstLineAsHeader, primaryFileResource, additionalFileResources);
     }
 
@@ -25,15 +25,15 @@ public class VerbNounPairCSVReader extends CSVReader<WordDefinitionId, VerbNounP
         super((i, v) ->
                         new VerbNounPair(v.get(0), i.getMeaningId(), v.get(1)),
                 c -> new WordDefinitionId(c.getVerb(), c.getVerbOccurrenceId()),
-                (r, v) -> new WordDefinitionId(v.get(1), 1),
+                (r, v) -> new WordDefinitionId(v.get(0), getVerbOccurrenceId(r, v.get(0))),
                 firstLineAsHeader, fileResources);
     }
 
-    private static int getNounMeaningId(SortedMap<WordDefinitionId, VerbNounPair> resultsSoFar, String noun) {
+    private static int getVerbOccurrenceId(SortedMap<WordDefinitionId, VerbNounPair> resultsSoFar, String verb) {
         int meaningId = 1;
         Integer maxMeaningId = null;
         for (Map.Entry<WordDefinitionId, VerbNounPair> entry : resultsSoFar.entrySet()) {
-            if (entry.getValue().getNoun().equals(noun)) {
+            if (entry.getValue().getVerb().equals(verb)) {
                 meaningId++;
                 if (maxMeaningId == null || entry.getKey().getMeaningId() > maxMeaningId.intValue()) {
                     maxMeaningId = entry.getKey().getMeaningId() + 1;
@@ -43,11 +43,11 @@ public class VerbNounPairCSVReader extends CSVReader<WordDefinitionId, VerbNounP
         // Sanity check
         if (maxMeaningId != null) {
             if (meaningId != (maxMeaningId)) {
-                throw new IllegalStateException("Meaning id does match expected value of " + (maxMeaningId) + " for:" + noun);
+                throw new IllegalStateException("Occurrence id does match expected value of " + (maxMeaningId) + " for:" + verb);
             }
         } else {
             if (meaningId != 1) {
-                throw new IllegalStateException("Meaning id does match expected value of 1 for :" + noun);
+                throw new IllegalStateException("Occurrence id does match expected value of 1 for :" + verb);
             }
         }
 
