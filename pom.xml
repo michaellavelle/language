@@ -11,5 +11,6 @@
         <module>adverbs-not-mapped-from-adjectives</module>
         <module>adjective-adverb-pairs</module>
         <module>verbs</module>
+        <module>verb-noun-pairs</module>
     </modules>
 </project>
