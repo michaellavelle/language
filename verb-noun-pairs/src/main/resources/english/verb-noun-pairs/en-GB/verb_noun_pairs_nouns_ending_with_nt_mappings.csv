@@ -1,6 +1,7 @@
 abandon,abandonment
 abase,abasement
 abate,abatement
+accelerate,accelerant
 accompany,accompaniment
 accomplish,accomplishment
 achieve,achievement
@@ -17,6 +18,7 @@ amend,amendment
 amuse,amusement
 announce,announcement
 appoint,appointment
+argue,argument
 arrange,arrangement
 assess,assessment
 assign,assignment
@@ -62,6 +64,7 @@ elope,elopement
 embank,embankment
 embarrass,embarrassment
 embezzle,embezzlement
+embody,embodiment
 employ,employment
 empower,empowerment
 enact,enactment
@@ -89,9 +92,9 @@ entrap,entrapment
 equip,equipment
 establish,establishment
 estrange,estrangement
+excrete,excrement
 excite,excitement
 experiment,experiment
-fulfil,fulfillment
 fulfil,fulfilment
 govern,government
 harass,harassment
@@ -109,6 +112,8 @@ instrument,instrument
 intern,internment
 invest,investment
 involve,involvement
+irritate,irritant
+judge,judgment
 judge,judgement
 malnourish,malnourishment
 manage,management
@@ -118,8 +123,11 @@ misjudge,misjudgment
 mismanage,mismanagement
 misplace,misplacement
 mistreat,mistreatment
+move,movement
 nourish,nourishment
 overinvest,overinvestment
+pave,pavement
+pay,payment
 place,placement
 postpone,postponement
 precede,precedent
@@ -150,6 +158,7 @@ retire,retirement
 retrench,retrenchment
 second,secondment
 settle,settlement
+ship,shipment
 state,statement
 supplant,supplement
 temper,temperament
