@@ -15,8 +15,9 @@ public class VerbNounPairsNounsEndingWithOnEnGBTest {
 
     @Test
     public void testVerbNounPairsLoad() {
-        Assertions.assertEquals(548, VerbNounPairsEnGB.ALL_VERB_NOUN_PAIRS.size());
+        Assertions.assertEquals(694, VerbNounPairsEnGB.ALL_VERB_NOUN_PAIRS.size());
         List<String> knownVerbs = EnglishWordsEnGB.ALL_VERBS.keySet().stream().map(w -> w.getWord()).collect(Collectors.toList());
+
         for (Map.Entry<WordDefinitionId, VerbNounPair> verbNounPair : VerbNounPairsEnGB.ALL_VERB_NOUN_PAIRS.entrySet()) {
             String noun = verbNounPair.getValue().getNoun();
             Assertions.assertTrue(noun.endsWith("on"), "Noun:" + noun + " doesn't end with 'on'");
