@@ -4,6 +4,7 @@ abate,abatement
 accelerate,accelerant
 accompany,accompaniment
 accomplish,accomplishment
+account,account
 account,accountant
 achieve,achievement
 acknowledge,acknowledgement
@@ -18,6 +19,7 @@ align,alignment
 allot,allotment
 amaze,amazement
 amend,amendment
+amount,amount
 amuse,amusement
 announce,announcement
 apply, applicant
@@ -40,6 +42,7 @@ battle,battlefront
 bemuse,bemusement
 bereave,bereavement
 bewilder,bewilderment
+blunt,blunt
 bombard,bombardment
 catch,catchment
 cement,cement
@@ -64,6 +67,7 @@ contain,contaminant
 content,contentment
 contest,contestant
 correspond,correspondent
+count,count
 curtail,curtailment
 depart,department
 deploy,deployment
@@ -128,6 +132,8 @@ fulfil,fulfilment
 govern,government
 grunt,grunt
 harass,harassment
+haunt,haunt
+hunt,hunt
 immigrate,immigrant
 impair,impairment
 impeach,impeachment
@@ -161,6 +167,7 @@ misjudge,misjudgment
 mismanage,mismanagement
 misplace,misplacement
 mistreat,mistreatment
+mount,mount
 move,movement
 nourish,nourishment
 occupy,occupant
@@ -181,11 +188,13 @@ pronounce,pronouncement
 propose,proponent
 protest,protestant
 punish,punishment
+punt,punt
 puzzle,puzzlement
 realign,realignment
 reappoint,reappointment
 reassign,reassignment
 receive,recipient
+recount,recount
 recruit,recruitment
 redevelop,redevelopment
 reenact,reenactment
@@ -213,6 +222,7 @@ serve,servant
 settle,settlement
 ship,shipment
 shop,shopfront
+shunt,shunt
 solve,solvent
 state,statement
 stimulate,stimulant
@@ -220,6 +230,7 @@ store,storefront
 storm,stormfront
 study,student
 supplant,supplement
+taunt,taunt
 temper,temperament
 torment,torment
 transplant,transplant
