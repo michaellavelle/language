@@ -7,6 +7,6 @@ public class VerbNounPairsNounsEndingWithErEnGBTest extends VerbNounPairsNounsEn
 
     @Test
     public void testVerbNounPairsLoad() {
-        testVerbNounPairsLoad("er", 659);
+        testVerbNounPairsLoad("er", 658);
     }
 }
