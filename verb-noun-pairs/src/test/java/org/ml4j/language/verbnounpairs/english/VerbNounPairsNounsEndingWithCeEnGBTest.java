@@ -7,6 +7,6 @@ public class VerbNounPairsNounsEndingWithCeEnGBTest extends VerbNounPairsNounsEn
 
     @Test
     public void testVerbNounPairsLoad() {
-        testVerbNounPairsLoad("ce", 70);
+        testVerbNounPairsLoad("ce", 110);
     }
 }
