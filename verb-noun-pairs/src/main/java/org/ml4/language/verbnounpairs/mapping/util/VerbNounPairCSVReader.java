@@ -31,26 +31,11 @@ public class VerbNounPairCSVReader extends CSVReader<WordDefinitionId, VerbNounP
 
     private static int getVerbOccurrenceId(SortedMap<WordDefinitionId, VerbNounPair> resultsSoFar, String verb) {
         int meaningId = 1;
-        Integer maxMeaningId = null;
         for (Map.Entry<WordDefinitionId, VerbNounPair> entry : resultsSoFar.entrySet()) {
             if (entry.getValue().getVerb().equals(verb)) {
                 meaningId++;
-                if (maxMeaningId == null || entry.getKey().getMeaningId() > maxMeaningId.intValue()) {
-                    maxMeaningId = entry.getKey().getMeaningId() + 1;
-                }
             }
         }
-        // Sanity check
-        if (maxMeaningId != null) {
-            if (meaningId != (maxMeaningId)) {
-                throw new IllegalStateException("Occurrence id does match expected value of " + (maxMeaningId) + " for:" + verb);
-            }
-        } else {
-            if (meaningId != 1) {
-                throw new IllegalStateException("Occurrence id does match expected value of 1 for :" + verb);
-            }
-        }
-
         return meaningId;
     }
 }

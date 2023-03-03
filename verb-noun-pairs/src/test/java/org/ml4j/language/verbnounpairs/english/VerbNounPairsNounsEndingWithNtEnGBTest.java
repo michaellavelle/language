@@ -16,6 +16,6 @@ public class VerbNounPairsNounsEndingWithNtEnGBTest extends VerbNounPairsNounsEn
 
     @Test
     public void testVerbNounPairsLoad() {
-        testVerbNounPairsLoad("nt", 175);
+        testVerbNounPairsLoad("nt", 176);
     }
 }

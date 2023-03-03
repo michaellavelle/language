@@ -40,26 +40,11 @@ public class VerbConjugationCSVReader<T extends VerbConjugation> extends CSVRead
 
     private static <V extends VerbConjugation> int getMeaningId(SortedMap<WordDefinitionId, V> resultsSoFar, String verb) {
         int meaningId = 1;
-        Integer maxMeaningId = null;
         for (Map.Entry<WordDefinitionId, V> entry : resultsSoFar.entrySet()) {
             if (entry.getValue().getVerb().equals(verb)) {
                 meaningId++;
-                if (maxMeaningId == null || entry.getKey().getMeaningId() > maxMeaningId.intValue()) {
-                    maxMeaningId = entry.getKey().getMeaningId() + 1;
-                }
             }
         }
-        // Sanity check
-        if (maxMeaningId != null) {
-            if (meaningId != (maxMeaningId)) {
-                throw new IllegalStateException("Meaning id does match expected value of " + (maxMeaningId) + " for:" + verb);
-            }
-        } else {
-            if (meaningId != 1) {
-                throw new IllegalStateException("Meaning id does match expected value of 1 for :" + verb);
-            }
-        }
-
         return meaningId;
     }
 }

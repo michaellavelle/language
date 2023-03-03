@@ -31,9 +31,11 @@ public class VerbNounPairsEnGB {
 
     private final static String VERB_NOUN_PAIRS_NOUNS_ENDING_WITH_ON_MAPPINGS_FILE_PATH = "/english/verb-noun-pairs/en-GB/verb_noun_pairs_nouns_ending_with_on_mappings.csv";
     private final static String VERB_NOUN_PAIRS_NOUNS_ENDING_WITH_NT_MAPPINGS_FILE_PATH = "/english/verb-noun-pairs/en-GB/verb_noun_pairs_nouns_ending_with_nt_mappings.csv";
+    private final static String VERB_NOUN_PAIRS_NOUNS_ENDING_WITH_CE_MAPPINGS_FILE_PATH = "/english/verb-noun-pairs/en-GB/verb_noun_pairs_nouns_ending_with_ce_mappings.csv";
 
     public final static SortedMap<WordDefinitionId, VerbNounPair> ALL_VERB_NOUN_PAIRS = new VerbNounPairCSVReader(false,
             VERB_NOUN_PAIRS_NOUNS_ENDING_WITH_ON_MAPPINGS_FILE_PATH,
-            VERB_NOUN_PAIRS_NOUNS_ENDING_WITH_NT_MAPPINGS_FILE_PATH).load();
+            VERB_NOUN_PAIRS_NOUNS_ENDING_WITH_NT_MAPPINGS_FILE_PATH,
+            VERB_NOUN_PAIRS_NOUNS_ENDING_WITH_CE_MAPPINGS_FILE_PATH).load();
 
 }

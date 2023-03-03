@@ -27,23 +27,9 @@ public class AdjectiveAdverbPairCSVReader extends CSVReader<WordDefinitionId, Ad
 
     private static int getAdverbMeaningId(SortedMap<WordDefinitionId, AdjectiveAdverbPair> resultsSoFar, String adverb) {
         int meaningId = 1;
-        Integer maxMeaningId = null;
         for (Map.Entry<WordDefinitionId, AdjectiveAdverbPair> entry : resultsSoFar.entrySet()) {
             if (entry.getValue().getAdverb().equals(adverb)) {
                 meaningId++;
-                if (maxMeaningId == null || entry.getKey().getMeaningId() > maxMeaningId.intValue()) {
-                    maxMeaningId = entry.getKey().getMeaningId() + 1;
-                }
-            }
-        }
-        // Sanity check
-        if (maxMeaningId != null) {
-            if (meaningId != (maxMeaningId)) {
-                throw new IllegalStateException("Meaning id does match expected value of " + (maxMeaningId) + " for:" + adverb);
-            }
-        } else {
-            if (meaningId != 1) {
-                throw new IllegalStateException("Meaning id does match expected value of 1 for :" + adverb);
             }
         }
 

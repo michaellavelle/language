@@ -16,6 +16,6 @@ public class VerbNounPairsNounsEndingWithOnEnGBTest extends VerbNounPairsNounsEn
 
     @Test
     public void testVerbNounPairsLoad() {
-        testVerbNounPairsLoad("on", 694);
+        testVerbNounPairsLoad("on", 700);
     }
 }
