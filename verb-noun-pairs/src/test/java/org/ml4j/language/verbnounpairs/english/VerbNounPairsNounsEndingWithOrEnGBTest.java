@@ -7,6 +7,6 @@ public class VerbNounPairsNounsEndingWithOrEnGBTest extends VerbNounPairsNounsEn
 
     @Test
     public void testVerbNounPairsLoad() {
-        testVerbNounPairsLoad("or", 32);
+        testVerbNounPairsLoad("or", 35);
     }
 }
