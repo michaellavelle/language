@@ -28,7 +28,6 @@ public class VerbNounPairsNounsEndingWithEnGBTestBase {
                 Assertions.assertTrue(noun.endsWith(suffix), "Noun:" + noun + " doesn't end with '" + suffix + "'");
                 String verbFromKey = verbNounPair.getKey().getWord();
                 String verbFromValue = verbNounPair.getValue().getVerb();
-                System.out.println(verbFromKey + "," + noun);
 
                 Assertions.assertEquals(verbFromKey, verbFromValue, "Verb from key:" + verbFromKey + " doesn't equal verb from value:" + verbFromValue);
                 Assertions.assertTrue(knownVerbs.contains(verbFromKey), "Unknown verb:" + verbFromKey);
