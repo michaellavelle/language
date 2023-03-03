@@ -115,7 +115,6 @@ conscript,conscription
 conserve,conservation
 consider,consideration
 console,consolation
-console,consolation
 constellate,constellation
 consternate,consternation
 constipate,constipation
@@ -131,7 +130,6 @@ contort,contortion
 contract,contraction
 contradict,contradiction
 contravene,contravention
-contribute,contribution
 contribute,contribution
 convene,convention
 converge,conversation
@@ -314,7 +312,6 @@ fertilise,fertilisation
 fictionalise,fictionalisation
 filtrate,filtration
 fixate,fixation
-fixate,fixation
 flagellate,flagellation
 flirt,flirtation
 float,flotation
@@ -347,7 +344,6 @@ idealise,idealisation
 ideate,ideation
 identify,identification
 ignite,ignition
-ignite,ignition
 illuminate,illumination
 illustrate,illustration
 imagine,imagination
@@ -370,7 +366,6 @@ incorporate,incorporation
 incriminate,incrimination
 index,indexation
 indicate,indication
-indoctrinate,indoctrination
 indoctrinate,indoctrination
 induct,induction
 industrialise,industrialisation
@@ -399,7 +394,6 @@ instruct,instruction
 instrument,instrumentation
 insulate,insulation
 integrate,integration
-integrate,integration
 intend,intention
 intensify,intensification
 interact,interaction
@@ -408,7 +402,6 @@ interpret,interpretation
 interrogate,interrogation
 intersect,intersection
 intervene,intervention
-intimidate,intimidation
 intimidate,intimidation
 intoxicate,intoxication
 introduce,introduction
@@ -422,7 +415,6 @@ invoke,invocation
 irrigate,irrigation
 irritate,irritation
 isolate,isolation
-isolate,isolation
 iterate,iteration
 justify,justification
 lacerate,laceration
@@ -432,7 +424,6 @@ legalise,legalisation
 legislate,legislation
 liaise,liaison
 liberalise,liberalisation
-liberate,liberation
 liberate,liberation
 limit,limitation
 liquidate,liquidation
@@ -527,9 +518,7 @@ prepublish,prepublication
 prescribe,prescription
 prescribe,presciption
 present,presentation
-present,presentation
 preserve,preservation
-presume,presumption
 presume,presumption
 prevaricate,prevarication
 prevent,prevention
@@ -559,7 +548,6 @@ qualify,qualification
 quest,question
 quote,quotation
 racialise,racialisation
-radiate,radiation
 radiate,radiation
 radicalise,radicalisation
 ratify,ratification
@@ -609,8 +597,6 @@ relate,relation
 relax,relaxation
 relegate,relegation
 relocate,relocation
-relocate,relocation
-remunerate,remuneration
 remunerate,remuneration
 renationalise,renationalisation
 renovate,renovation
@@ -624,8 +610,6 @@ repudiate,repudiation
 repurpose,reputation
 reserve,reservation
 resign,resignation
-resign,resignation
-resolve,resolution
 resolve,resolution
 restore,restoration
 restrict,restriction
@@ -654,16 +638,13 @@ seduce,seduction
 segregate,segregation
 select,selection
 sense,sensation
-sense,sensation
 sensitise,sensitisation
-separate,separation
 separate,separation
 sequester,sequestration
 serialise,serialisation
 simulate,simulation
 situate,situation
 solicit,solicitation
-solve,solution
 solve,solution
 sophisticate,sophistication
 speculate,speculation
@@ -710,13 +691,11 @@ validate,validation
 value,valuation
 variate,variation
 vegetate,vegetation
-vegetate,vegetation
 ventilate,ventilation
 verify,verification
 victimise,victimisation
 vilify,vilification
 vindicate,vindication
-violate,violation
 violate,violation
 visualise,visualisation
 vocalise,vocalisation
