@@ -7,6 +7,6 @@ public class AllVerbNounPairsGBTest extends VerbNounPairsNounsEndingWithEnGBTest
 
     @Test
     public void testVerbNounPairsLoad() {
-        testVerbNounPairsLoad("", 1524);
+        testVerbNounPairsLoad("", 1595);
     }
 }
