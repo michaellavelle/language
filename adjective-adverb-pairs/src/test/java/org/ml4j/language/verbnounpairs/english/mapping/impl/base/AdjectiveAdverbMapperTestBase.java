@@ -3,8 +3,8 @@ package org.ml4j.language.verbnounpairs.english.mapping.impl.base;
 import org.junit.jupiter.api.Assertions;
 import org.ml4.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbMapper;
 import org.ml4.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbPairMappers;
-import org.ml4j.language.verbnounpairs.mapping.util.AdjectiveAdverbPair;
-import org.ml4j.language.verbnounpairs.mapping.util.AdjectiveAdverbPairCSVReader;
+import org.ml4j.language.verbnounpairs.mapping.util.AdjectiveAdverbMapping;
+import org.ml4j.language.verbnounpairs.mapping.util.AdjectiveAdverbMappingCSVReader;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
@@ -61,19 +61,19 @@ public class AdjectiveAdverbMapperTestBase {
 
         AdjectiveAdverbMapper adverbMapper = AdjectiveAdverbPairMappers.DEFAULT_ADJECTIVE_ADVERB_MAPPER;
 
-        SortedMap<WordDefinitionId, AdjectiveAdverbPair> expectedMappings =
-                new AdjectiveAdverbPairCSVReader((i, v) ->
-                        new AdjectiveAdverbPair(v.get(0), i.getMeaningId(), v.get(1)),
+        SortedMap<WordDefinitionId, AdjectiveAdverbMapping> expectedMappings =
+                new AdjectiveAdverbMappingCSVReader((i, v) ->
+                        new AdjectiveAdverbMapping(v.get(0), i.getMeaningId(), v.subList(1, v.size())),
                         false, Arrays.asList(expectedResultsFilePath)).load();
 
         Assertions.assertEquals(adjectivesSize, expectedMappings.size(), "Size of expected mappings doesn't match adjectives size");
 
-        for (Map.Entry<WordDefinitionId, AdjectiveAdverbPair> entry : expectedMappings.entrySet()) {
+        for (Map.Entry<WordDefinitionId, AdjectiveAdverbMapping> entry : expectedMappings.entrySet()) {
             Assertions.assertEquals(entry.getKey().getWord(), entry.getValue().getAdjective());
             Assertions.assertTrue(adjectives.contains(entry.getValue().getAdjective()), "Registered adjective list doesn't contain expected adjective of:" + entry.getValue().getAdjective());
-            Assertions.assertTrue(adverbs.contains(entry.getValue().getAdverb()), "Registered adverb list doesn't contain expected adverb of:" + entry.getValue().getAdverb());
-            String mappedAdverb = adverbMapper.getAdverbFromAdjective(entry.getKey().getWord());
-            Assertions.assertEquals(entry.getValue().getAdverb(), mappedAdverb, "Mapped adverb doesn't match expected adverb of:" + entry.getValue().getAdverb());
+            Assertions.assertTrue(adverbs.containsAll(entry.getValue().getAdverbs()), "Registered adverb list doesn't contain expected adverbs of:" + entry.getValue().getAdverbs());
+            List<String> mappedAdverbs = adverbMapper.getAdverbsFromAdjective(entry.getKey().getWord());
+            Assertions.assertEquals(entry.getValue().getAdverbs(), mappedAdverbs, "Mapped adverbs doesn't match expected adverbs of:" + entry.getValue().getAdverbs());
         }
     }
 }

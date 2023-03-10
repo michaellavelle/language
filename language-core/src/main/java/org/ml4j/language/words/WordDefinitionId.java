@@ -15,6 +15,10 @@ public class WordDefinitionId implements Comparable<WordDefinitionId> {
         return meaningId;
     }
 
+    public static WordDefinitionId create(String word, int meaningId) {
+        return new WordDefinitionId(word, meaningId);
+    }
+
     public WordDefinitionId(String word, int meaningId) {
         this.word = word;
         this.meaningId = meaningId;

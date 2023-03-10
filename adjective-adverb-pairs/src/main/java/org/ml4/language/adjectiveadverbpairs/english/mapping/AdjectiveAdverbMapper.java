@@ -12,6 +12,9 @@
  * the License.
  */
 package org.ml4.language.adjectiveadverbpairs.english.mapping;
+
+import java.util.List;
+
 /**
  * Default interface for a mapping between adjectives and adverbs within an adjective-adverb pair.
  *
@@ -19,9 +22,9 @@ package org.ml4.language.adjectiveadverbpairs.english.mapping;
  */
 public interface AdjectiveAdverbMapper {
 
-    String getAdverbFromAdjective(String adjective);
+    List<String> getAdverbsFromAdjective(String adjective);
 
-    String getAdjectiveFromAdverb(String adverb);
+    List<String> getAdjectivesFromAdverb(String adverb);
 
 
 }

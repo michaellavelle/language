@@ -66,26 +66,11 @@ public class CSVReader<I, T> {
 
     protected static int getOccurrenceId(SortedMap<WordDefinitionId, WordDefinition> resultsSoFar, String verb) {
         int meaningId = 1;
-        Integer maxMeaningId = null;
         for (Map.Entry<WordDefinitionId, WordDefinition> entry : resultsSoFar.entrySet()) {
             if (entry.getValue().getWord().equals(verb)) {
                 meaningId++;
-                if (maxMeaningId == null || entry.getKey().getMeaningId() > maxMeaningId.intValue()) {
-                    maxMeaningId = entry.getKey().getMeaningId() + 1;
-                }
             }
         }
-        // Sanity check
-        if (maxMeaningId != null) {
-            if (meaningId != (maxMeaningId)) {
-                throw new IllegalStateException("Meaning id does match expected value of " + (maxMeaningId));
-            }
-        } else {
-            if (meaningId != 1) {
-                throw new IllegalStateException("Meaning id does match expected value of 1");
-            }
-        }
-
         return meaningId;
     }
 

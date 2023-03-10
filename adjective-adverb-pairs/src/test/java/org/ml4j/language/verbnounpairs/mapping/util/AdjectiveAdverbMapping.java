@@ -1,26 +1,28 @@
 package org.ml4j.language.verbnounpairs.mapping.util;
 
-public class AdjectiveAdverbPair {
+import java.util.List;
+
+public class AdjectiveAdverbMapping {
     private String adjective;
 
     private int adjectiveMeaningId;
-    private String adverb;
+    private List<String> adverbs;
 
     public int getAdjectiveMeaningId() {
         return adjectiveMeaningId;
     }
 
-    public AdjectiveAdverbPair(String adjective, int adjectiveMeaningId, String adverb) {
+    public AdjectiveAdverbMapping(String adjective, int adjectiveMeaningId, List<String> adverbs) {
         this.adjective = adjective;
         this.adjectiveMeaningId = adjectiveMeaningId;
-        this.adverb = adverb;
+        this.adverbs = adverbs;
     }
 
     public String getAdjective() {
         return adjective;
     }
 
-    public String getAdverb() {
-        return adverb;
+    public List<String> getAdverbs() {
+        return adverbs;
     }
 }

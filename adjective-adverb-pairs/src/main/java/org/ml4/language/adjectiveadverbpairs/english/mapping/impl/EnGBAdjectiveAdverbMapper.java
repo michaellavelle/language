@@ -2,6 +2,9 @@ package org.ml4.language.adjectiveadverbpairs.english.mapping.impl;
 
 import org.ml4.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbMapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
 
     private final static String D = "d";
@@ -50,32 +53,34 @@ public class EnGBAdjectiveAdverbMapper implements AdjectiveAdverbMapper {
     private final static String BLIC = BL + IC;
 
     @Override
-    public String getAdverbFromAdjective(String adjective) {
+    public List<String> getAdverbsFromAdjective(String adjective) {
+        List<String> adverbs = new ArrayList<>();
         if (adjective.endsWith(SOLE)) {
             // sole
-            return adjective + LY;
+            adverbs.add(adjective + LY);
         } else if (adjective.endsWith(DUE) || adjective.endsWith(RUE) || adjective.endsWith(RIE) || adjective.endsWith(OLE)) {
             // due, eerie, true, undue, whole
-            return adjective.substring(0, adjective.length() - 1) + LY;
+            adverbs.add(adjective.substring(0, adjective.length() - 1) + LY);
         } else if (adjective.endsWith(LE)) {
             // covers ble, ple, tle
-            return adjective.substring(0, adjective.length()- 1) + Y;
+            adverbs.add(adjective.substring(0, adjective.length()- 1) + Y);
         } else if (adjective.endsWith(IC) && !adjective.endsWith(BLIC)) { // excludes public, but includes symbolic
-            return adjective + ALLY;
+            adverbs.add(adjective + ALLY);
         } else if (adjective.endsWith(RY) && !adjective.endsWith(DRY) && !adjective.endsWith(WRY)) { // excludes public, but includes symbolic
-            return adjective.substring(0, adjective.length() - 1) + ILY;
+            adverbs.add(adjective.substring(0, adjective.length() - 1) + ILY);
         }
         else if (adjective.endsWith(Y) && !adjective.endsWith(OY) && !adjective.endsWith(RY) && !adjective.endsWith(SLY)) { // slyly
-            return adjective.substring(0, adjective.length()- 1) + ILY;
+            adverbs.add(adjective.substring(0, adjective.length()- 1) + ILY);
         } else if (adjective.endsWith(LL)) { // full/fully
-            return adjective + Y;
+            adverbs.add(adjective + Y);
         }
         else {
-            return adjective + LY;
+            adverbs.add(adjective + LY);
         }
+        return adverbs;
     }
     @Override
-    public String getAdjectiveFromAdverb(String adverb) {
+    public List<String> getAdjectivesFromAdverb(String adverb) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 }
