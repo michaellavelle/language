@@ -64,12 +64,13 @@ public abstract class VerbConjugationBase extends VerbConjugationBaseParent impl
         return meaningId == that.meaningId &&
                 Objects.equals(verb, that.verb) &&
                 Objects.equals(pastTenses, that.pastTenses) &&
+                Objects.equals(getPastParticiples(), that.getPastParticiples()) &&
                 Objects.equals(presentParticiples, that.presentParticiples);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(verb, meaningId, pastTenses, presentParticiples);
+        return Objects.hash(verb, meaningId, pastTenses, getPastParticiples(), presentParticiples);
     }
 
     public String getVerb() {
