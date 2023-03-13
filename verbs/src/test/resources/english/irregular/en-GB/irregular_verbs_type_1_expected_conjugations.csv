@@ -27,6 +27,7 @@ drink,past_tense=drank,past_participle=drunk,present_participle=drinking
 drive,past_tense=drove,past_participle=driven,present_participle=driving
 eat,past_tense=ate,past_participle=eaten,present_participle=eating
 fall,past_tense=fell,past_participle=fallen,present_participle=falling
+fling,past_tense=flung,past_participle=flung,present_participle=flinging
 fly,past_tense=flew,past_participle=flown,present_participle=flying
 forbear,past_tense=forbore,past_participle=forborne,present_participle=forbearing
 forbid,past_tense=forbade,past_tense=forbad,past_participle=forbidden,present_participle=forbidding
