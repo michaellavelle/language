@@ -1,31 +1,33 @@
-package org.ml4j.language.verbs.english.demo;
+package org.ml4j.language.verbs.english.demo.specialcases;
 
+import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
-import org.ml4j.language.verbs.english.conjugation.specialcases.SpecialCaseVerbConjugations;
+import org.ml4j.language.verbs.english.conjugation.VerbConjugators;
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
 import org.ml4j.language.verbs.english.tenses.Tense;
+import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ToBeVerbConjugationDemo {
+public class ToWillNonModalVerbConjugationDemo {
 
     public static void main(String[] args) {
 
         // Add all verb-related words (so far) to a list, and then remove duplicates
         List<String> verbRelatedWords = new ArrayList<>();
 
-        VerbConjugation iRegularVerbConjugation = SpecialCaseVerbConjugations.TO_BE_VERB_CONJUGATION;
+        VerbConjugation iRegularVerbConjugation = VerbConjugators.REGULAR_VERB_CONJUGATOR.getConjugatedVerb(EnglishWordsEnGB.ALL_REGULAR_VERBS.get(WordDefinitionId.create("will", 1)));
 
         verbRelatedWords.add(iRegularVerbConjugation.getVerb());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPastParticiples());
-        for (SubjectType subjectType : SubjectType.values()) {
+        for (SubjectType subjectType : iRegularVerbConjugation.getSupportedSubjectTypes()) {
             verbRelatedWords.addAll(iRegularVerbConjugation.getPastTenses(subjectType));
             verbRelatedWords.add(iRegularVerbConjugation.getPresentTense(subjectType));
-            for (Tense tense : Tense.values()) {
+            for (Tense tense : iRegularVerbConjugation.getSupportedTenses()) {
                 List<String> conjugations = iRegularVerbConjugation.conjugateVerb(getDefaultSubjectName(subjectType), subjectType, tense);
                 System.out.println(tense + ":" + subjectType + ":" + conjugations);
             }
@@ -40,7 +42,9 @@ public class ToBeVerbConjugationDemo {
             return "I";
         } else if (SubjectType.FIRST_PERSON_PLURAL.equals(subjectType)) {
             return "We";
-        } else if (SubjectType.SECOND_PERSON.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_SINGULAR.equals(subjectType)) {
+            return "You";
+        } else if (SubjectType.SECOND_PERSON_PLURAL.equals(subjectType)) {
             return "You";
         } else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
             return "He";

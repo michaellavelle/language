@@ -1,8 +1,9 @@
-package org.ml4j.language.verbs.english.demo;
+package org.ml4j.language.verbs.english.demo.examples;
 
 import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugators;
+import org.ml4j.language.verbs.english.conjugation.contraction.ContractionVerbConjugatorDecorator;
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
 import org.ml4j.language.verbs.english.tenses.Tense;
 import org.ml4j.language.words.WordDefinitionId;
@@ -12,14 +13,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ToWillVerbConjugationDemo {
+public class ToLiveVerbConjugationDemo {
 
     public static void main(String[] args) {
 
         // Add all verb-related words (so far) to a list, and then remove duplicates
         List<String> verbRelatedWords = new ArrayList<>();
 
-        VerbConjugation iRegularVerbConjugation = VerbConjugators.REGULAR_VERB_CONJUGATOR.getConjugatedVerb(EnglishWordsEnGB.ALL_REGULAR_VERBS.get(new WordDefinitionId("will", 1)));
+        VerbConjugation iRegularVerbConjugation = new ContractionVerbConjugatorDecorator<>(VerbConjugators.REGULAR_VERB_CONJUGATOR).getConjugatedVerb(EnglishWordsEnGB.ALL_REGULAR_VERBS.get(WordDefinitionId.create("live", 1)));
 
         verbRelatedWords.add(iRegularVerbConjugation.getVerb());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
@@ -42,7 +43,9 @@ public class ToWillVerbConjugationDemo {
             return "I";
         } else if (SubjectType.FIRST_PERSON_PLURAL.equals(subjectType)) {
             return "We";
-        } else if (SubjectType.SECOND_PERSON.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_SINGULAR.equals(subjectType)) {
+            return "You";
+        } else if (SubjectType.SECOND_PERSON_PLURAL.equals(subjectType)) {
             return "You";
         } else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
             return "He";

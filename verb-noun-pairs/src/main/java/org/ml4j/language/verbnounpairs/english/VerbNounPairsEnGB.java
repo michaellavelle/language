@@ -11,15 +11,13 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.ml4.language.verbnounpairs.english;
+package org.ml4j.language.verbnounpairs.english;
 
-import org.ml4.language.verbnounpairs.mapping.util.VerbNounPair;
-import org.ml4.language.verbnounpairs.mapping.util.VerbNounPairCSVReader;
-import org.ml4j.language.words.WordDefinition;
+import org.ml4j.language.verbnounpairs.mapping.util.VerbNounPair;
+import org.ml4j.language.verbnounpairs.mapping.util.VerbNounPairCSVReader;
 import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.SortedMap;
-import java.util.TreeMap;
 
 /**
  * Statically defined variables to hold the en-GB loaded collections of verb-noun pairs

@@ -1,4 +1,4 @@
-package org.ml4.language.verbnounpairs.mapping.util;
+package org.ml4j.language.verbnounpairs.mapping.util;
 
 public class VerbNounPair {
     private String verb;

@@ -17,6 +17,7 @@ import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugationBase;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Default value object for the results of a regular Verb conjugation
@@ -44,7 +45,26 @@ public class IrregularVerbConjugation extends VerbConjugationBase implements Ver
     }
 
     @Override
+    public boolean isModelVerb() {
+        return false;
+    }
+
+    @Override
     public List<String> getPastParticiples() {
         return pastParticiples;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        IrregularVerbConjugation that = (IrregularVerbConjugation) o;
+        return Objects.equals(pastParticiples, that.pastParticiples);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), pastParticiples);
     }
 }

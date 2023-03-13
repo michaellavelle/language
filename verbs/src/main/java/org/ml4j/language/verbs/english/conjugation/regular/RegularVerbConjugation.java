@@ -43,6 +43,11 @@ public class RegularVerbConjugation extends VerbConjugationBase implements VerbC
     }
 
     @Override
+    public boolean isModelVerb() {
+        return false;
+    }
+
+    @Override
     public List<String> getPastParticiples() {
         return getPastTenses(null);
     }

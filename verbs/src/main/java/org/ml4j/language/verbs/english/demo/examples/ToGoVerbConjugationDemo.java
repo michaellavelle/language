@@ -1,4 +1,4 @@
-package org.ml4j.language.verbs.english.demo;
+package org.ml4j.language.verbs.english.demo.examples;
 
 import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
@@ -12,14 +12,14 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ToLiveVerbConjugationDemo {
+public class ToGoVerbConjugationDemo {
 
     public static void main(String[] args) {
 
         // Add all verb-related words (so far) to a list, and then remove duplicates
         List<String> verbRelatedWords = new ArrayList<>();
 
-        VerbConjugation iRegularVerbConjugation = VerbConjugators.REGULAR_VERB_CONJUGATOR.getConjugatedVerb(EnglishWordsEnGB.ALL_REGULAR_VERBS.get(new WordDefinitionId("live", 1)));
+        VerbConjugation iRegularVerbConjugation = VerbConjugators.IRREGULAR_VERB_CONJUGATOR.getConjugatedVerb(EnglishWordsEnGB.ALL_IRREGULAR_VERBS.get(WordDefinitionId.create("go", 1)));
 
         verbRelatedWords.add(iRegularVerbConjugation.getVerb());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
@@ -42,9 +42,11 @@ public class ToLiveVerbConjugationDemo {
             return "I";
         } else if (SubjectType.FIRST_PERSON_PLURAL.equals(subjectType)) {
             return "We";
-        } else if (SubjectType.SECOND_PERSON.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_SINGULAR.equals(subjectType)) {
             return "You";
-        } else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_PLURAL.equals(subjectType)) {
+            return "You";
+        }else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
             return "He";
         } else if (SubjectType.THIRD_PERSON_PLURAL.equals(subjectType)) {
             return "They";

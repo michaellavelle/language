@@ -1,9 +1,8 @@
 package org.ml4j.language.verbnounpairs.english.base;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.ml4.language.verbnounpairs.english.VerbNounPairsEnGB;
-import org.ml4.language.verbnounpairs.mapping.util.VerbNounPair;
+import org.ml4j.language.verbnounpairs.english.VerbNounPairsEnGB;
+import org.ml4j.language.verbnounpairs.mapping.util.VerbNounPair;
 import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.words.WordDefinitionId;
 

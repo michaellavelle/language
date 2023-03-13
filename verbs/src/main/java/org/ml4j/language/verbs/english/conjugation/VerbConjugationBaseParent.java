@@ -10,12 +10,18 @@ import java.util.stream.Collectors;
 
 public abstract class VerbConjugationBaseParent implements VerbConjugation{
 
-    // TODO - Add "will" as a modal verb
-    private final static String WILL = "will";
 
     @Override
     public List<String> conjugateVerb(String subjectName, SubjectType subjectType, Tense tense) {
-        return conjugateVerb(subjectType, tense, false).stream().map(w -> subjectName + " " + w).collect(Collectors.toList());
+        if (SubjectType.NONE.equals(subjectType)) {
+            return conjugateVerb(subjectType, tense, true).stream().collect(Collectors.toList());
+        } else {
+            if (isSubjectSuffixed()) {
+                return conjugateVerb(subjectType, tense, false).stream().map(w -> w + " " + subjectName).collect(Collectors.toList());
+            } else {
+                return conjugateVerb(subjectType, tense, false).stream().map(w -> subjectName + " " + w).collect(Collectors.toList());
+            }
+        }
     }
 
     @Override
@@ -61,11 +67,11 @@ public abstract class VerbConjugationBaseParent implements VerbConjugation{
             }
             return getPastParticiples();
         } else   if (Tense.FUTURE_SIMPLE.equals(tense)) {
-            return Arrays.asList(WILL + " " + getVerb());
+            return Arrays.asList(SpecialCaseVerbConjugations.WILL_MODEL_VERB_CONJUGATION.conjugateVerb(subjectType, Tense.PRESENT_SIMPLE, true).get(0) + " " + getVerb());
         } else if (Tense.FUTURE_PERFECT.equals(tense)){
             if (!verbOnly) {
                 String haveInfinitive = SpecialCaseVerbConjugations.TO_HAVE_VERB_CONJUGATION.getVerb();
-                return getPastParticiples().stream().map(w -> WILL + " " + haveInfinitive + " " + w).collect(Collectors.toList());
+                return getPastParticiples().stream().map(w -> SpecialCaseVerbConjugations.WILL_MODEL_VERB_CONJUGATION.conjugateVerb(subjectType, Tense.PRESENT_SIMPLE, true).get(0)  + " " + haveInfinitive + " " + w).collect(Collectors.toList());
             }
             return getPastParticiples();
         } else if (Tense.FUTURE_PERFECT_CONTINUOUS.equals(tense)){
@@ -79,7 +85,7 @@ public abstract class VerbConjugationBaseParent implements VerbConjugation{
                     if (bePastParticiples.size() != 1) {
                         throw new UnsupportedOperationException("Must be exactly one past participle of to be for this subject type and tense");
                     } else {
-                        return getPresentParticiples().stream().map(w -> WILL + " " + haveConjugation + " " + bePastParticiples.get(0) + " " + w).collect(Collectors.toList());
+                        return getPresentParticiples().stream().map(w -> SpecialCaseVerbConjugations.WILL_MODEL_VERB_CONJUGATION.conjugateVerb(subjectType, Tense.PRESENT_SIMPLE, true).get(0)  + " " + haveConjugation + " " + bePastParticiples.get(0) + " " + w).collect(Collectors.toList());
                     }
                 }
             }
@@ -87,7 +93,7 @@ public abstract class VerbConjugationBaseParent implements VerbConjugation{
         }else if (Tense.FUTURE_CONTINUOUS.equals(tense)){
             if (!verbOnly) {
                 String beInfinitive = SpecialCaseVerbConjugations.TO_BE_VERB_CONJUGATION.getVerb();
-                return getPresentParticiples().stream().map(w -> WILL + " " + beInfinitive + " " + w).collect(Collectors.toList());
+                return getPresentParticiples().stream().map(w -> SpecialCaseVerbConjugations.WILL_MODEL_VERB_CONJUGATION.conjugateVerb(subjectType, Tense.PRESENT_SIMPLE, true).get(0)  + " " + beInfinitive + " " + w).collect(Collectors.toList());
             }
             return getPastParticiples();
         } else if (Tense.PAST_SIMPLE.equals(tense)){

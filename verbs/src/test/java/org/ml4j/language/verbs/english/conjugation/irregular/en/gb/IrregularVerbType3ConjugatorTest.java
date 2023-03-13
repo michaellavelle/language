@@ -27,7 +27,7 @@ public class IrregularVerbType3ConjugatorTest extends IrregularVerbConjugatorTes
         IrregularVerbConjugator irregularVerbConjugator = VerbConjugators.IRREGULAR_VERB_CONJUGATOR;
 
         SortedMap<WordDefinitionId, ToBeVerbConjugation> expectedConjugatedVerbs = new TreeMap<>();
-        expectedConjugatedVerbs.put(new WordDefinitionId("be", 1), new ToBeVerbConjugation());
+        expectedConjugatedVerbs.put(WordDefinitionId.create("be", 1), new ToBeVerbConjugation());
 
         testVerbConjugation(irregularVerbConjugator, expectedConjugatedVerbs, verbs);
     }

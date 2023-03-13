@@ -1,4 +1,4 @@
-package org.ml4j.language.verbs.english.demo;
+package org.ml4j.language.verbs.english.demo.specialcases;
 
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.specialcases.SpecialCaseVerbConjugations;
@@ -22,10 +22,10 @@ public class ToHaveVerbConjugationDemo {
         verbRelatedWords.add(iRegularVerbConjugation.getVerb());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPastParticiples());
-        for (SubjectType subjectType : SubjectType.values()) {
+        for (SubjectType subjectType : iRegularVerbConjugation.getSupportedSubjectTypes()) {
             verbRelatedWords.addAll(iRegularVerbConjugation.getPastTenses(subjectType));
             verbRelatedWords.add(iRegularVerbConjugation.getPresentTense(subjectType));
-            for (Tense tense : Tense.values()) {
+            for (Tense tense : iRegularVerbConjugation.getSupportedTenses()) {
                 List<String> conjugations = iRegularVerbConjugation.conjugateVerb(getDefaultSubjectName(subjectType), subjectType, tense);
                 System.out.println(tense + ":" + subjectType + ":" + conjugations);
             }
@@ -40,9 +40,11 @@ public class ToHaveVerbConjugationDemo {
             return "I";
         } else if (SubjectType.FIRST_PERSON_PLURAL.equals(subjectType)) {
             return "We";
-        } else if (SubjectType.SECOND_PERSON.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_SINGULAR.equals(subjectType)) {
             return "You";
-        } else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_PLURAL.equals(subjectType)) {
+            return "You";
+        }else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
             return "He";
         } else if (SubjectType.THIRD_PERSON_PLURAL.equals(subjectType)) {
             return "They";

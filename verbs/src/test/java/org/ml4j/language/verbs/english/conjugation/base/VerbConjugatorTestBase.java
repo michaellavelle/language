@@ -44,7 +44,6 @@ public class VerbConjugatorTestBase {
         for (Map.Entry<WordDefinitionId, ? extends C> entry : expectedConjugatedVerbs.entrySet()) {
             assertEqual(entry.getValue(), conjugatedVerbsStartingWithA.get(entry.getKey()));
         }
-
         for (Map.Entry<WordDefinitionId, C> entry : conjugatedVerbsStartingWithA.entrySet()) {
             assertEqual(entry.getValue(), expectedConjugatedVerbs.get(entry.getKey()));
         }

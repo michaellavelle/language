@@ -7,6 +7,7 @@ import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
 import org.ml4j.language.words.WordDefinition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class VerbConjugationDemo {
             VerbConjugation regularVerbConjugation = VerbConjugators.REGULAR_VERB_CONJUGATOR.getConjugatedVerb(wd);
             verbRelatedWords.add(wd.getWord());
             verbRelatedWords.addAll(regularVerbConjugation.getPresentParticiples());
-            for (SubjectType subjectType : SubjectType.values()) {
+            for (SubjectType subjectType : regularVerbConjugation.getSupportedSubjectTypes()) {
                 verbRelatedWords.addAll(regularVerbConjugation.getPastTenses(subjectType));
                 verbRelatedWords.add(regularVerbConjugation.getPresentTense(subjectType));
             }
@@ -30,9 +31,11 @@ public class VerbConjugationDemo {
         for (WordDefinition wd : EnglishWordsEnGB.ALL_IRREGULAR_VERBS.values()) {
             VerbConjugation iRegularVerbConjugation = VerbConjugators.IRREGULAR_VERB_CONJUGATOR.getConjugatedVerb(wd);
             verbRelatedWords.add(wd.getWord());
-            verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
-            verbRelatedWords.addAll(iRegularVerbConjugation.getPastParticiples());
-            for (SubjectType subjectType : SubjectType.values()) {
+            if (!iRegularVerbConjugation.isModelVerb()) {
+                verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
+                verbRelatedWords.addAll(iRegularVerbConjugation.getPastParticiples());
+            }
+            for (SubjectType subjectType : iRegularVerbConjugation.getSupportedSubjectTypes()) {
                 verbRelatedWords.addAll(iRegularVerbConjugation.getPastTenses(subjectType));
                 verbRelatedWords.add(iRegularVerbConjugation.getPresentTense(subjectType));
             }

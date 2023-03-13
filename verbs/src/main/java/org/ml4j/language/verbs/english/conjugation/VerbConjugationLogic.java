@@ -220,9 +220,19 @@ public class VerbConjugationLogic {
         List<WordDefinition> matching = wordDefinitions.values().stream().filter(w -> w.getWord().equals(word)).collect(Collectors.toList());
         if (matching.size() != 1) {
             if (matching.size() > 1) {
-                throw new IllegalStateException("Not found: unique definition for:" + word);
+                // TEMP
+                WordDefinition first = matching.get(0);
+                for (int i = 1; i < matching.size(); i++) {
+                    WordDefinition other = matching.get(1);
+                    if (!first.getWord().equals(other.getWord()) || !first.getComponents().equals(other.getComponents()) || !first.getStressOnLastSyllable().equals(other.getStressOnLastSyllable())) {
+                        throw new IllegalStateException("Multiple definition for:" + word + " that are different");
+                    }
+                }
+                return matching.get(0);
             } else {
-                throw new IllegalStateException("Not found: definition for:" + word);
+                System.out.println("Not found: definition for:" + word);
+                //throw new IllegalStateException("Not found: definition for:" + word);
+                return new WordDefinition(WordDefinitionId.create(word, 1));
             }
         } else {
             return matching.get(0);
@@ -231,8 +241,9 @@ public class VerbConjugationLogic {
 
     private static String getConjugation(Map<WordDefinitionId, WordDefinition> allWords, WordDefinition wordDefinition, String doubleCandidate, String notDoubleCandidate, String addKForICOrACOrKEnding) {
         String verb = wordDefinition.getWord();
+
         if (verb.length() < 2) {
-            throw new IllegalStateException("Verbs must be at least two letters");
+            //throw new IllegalStateException("Verbs must be at least two letters");
         }
         if (isComposite(wordDefinition)) {
             String prefix = getCompositePrefix(wordDefinition);
@@ -250,8 +261,12 @@ public class VerbConjugationLogic {
                 WordDefinition suffix = getWordDefinition(allWords, suffixString);
                 return prefix + delimiter + getConjugation(allWords, suffix, doubleCandidate.substring(prefix.length() + delimiter.length()), notDoubleCandidate.substring(prefix.length() + delimiter.length()), addKForICOrACOrKEnding.substring(prefix.length() + delimiter.length()));
             } else {
-                throw new IllegalStateException("Invalid prefix");
+                throw new IllegalStateException("Invalid prefix:" + verb + ":" + prefix);
             }
+        }
+
+        if (verb.equals("k")) {
+            return notDoubleCandidate;
         }
 
         String verbLastLetter = verb.substring(verb.length() - 1);

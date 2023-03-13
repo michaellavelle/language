@@ -1,34 +1,36 @@
-package org.ml4j.language.verbs.english.demo;
+package org.ml4j.language.verbs.english.demo.specialcases.modalverbs;
 
 import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugators;
-import org.ml4j.language.verbs.english.conjugation.specialcases.SpecialCaseVerbConjugations;
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
 import org.ml4j.language.verbs.english.tenses.Tense;
 import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ToGoVerbConjugationDemo {
+public class CanModelVerbConjugationDemo {
 
     public static void main(String[] args) {
 
         // Add all verb-related words (so far) to a list, and then remove duplicates
         List<String> verbRelatedWords = new ArrayList<>();
 
-        VerbConjugation iRegularVerbConjugation = VerbConjugators.IRREGULAR_VERB_CONJUGATOR.getConjugatedVerb(EnglishWordsEnGB.ALL_IRREGULAR_VERBS.get(new WordDefinitionId("go", 1)));
+        VerbConjugation iRegularVerbConjugation = VerbConjugators.IRREGULAR_VERB_CONJUGATOR.getConjugatedVerb(EnglishWordsEnGB.ALL_IRREGULAR_VERBS.get(WordDefinitionId.create("can", 1)));
 
         verbRelatedWords.add(iRegularVerbConjugation.getVerb());
-        verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
-        verbRelatedWords.addAll(iRegularVerbConjugation.getPastParticiples());
-        for (SubjectType subjectType : SubjectType.values()) {
+        if (!iRegularVerbConjugation.isModelVerb()) {
+            verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
+            verbRelatedWords.addAll(iRegularVerbConjugation.getPastParticiples());
+        }
+        for (SubjectType subjectType : iRegularVerbConjugation.getSupportedSubjectTypes()) {
             verbRelatedWords.addAll(iRegularVerbConjugation.getPastTenses(subjectType));
             verbRelatedWords.add(iRegularVerbConjugation.getPresentTense(subjectType));
-            for (Tense tense : Tense.values()) {
+            for (Tense tense : iRegularVerbConjugation.getSupportedTenses()) {
                 List<String> conjugations = iRegularVerbConjugation.conjugateVerb(getDefaultSubjectName(subjectType), subjectType, tense);
                 System.out.println(tense + ":" + subjectType + ":" + conjugations);
             }
@@ -43,9 +45,11 @@ public class ToGoVerbConjugationDemo {
             return "I";
         } else if (SubjectType.FIRST_PERSON_PLURAL.equals(subjectType)) {
             return "We";
-        } else if (SubjectType.SECOND_PERSON.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_SINGULAR.equals(subjectType)) {
             return "You";
-        } else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_PLURAL.equals(subjectType)) {
+            return "You";
+        }else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
             return "He";
         } else if (SubjectType.THIRD_PERSON_PLURAL.equals(subjectType)) {
             return "They";

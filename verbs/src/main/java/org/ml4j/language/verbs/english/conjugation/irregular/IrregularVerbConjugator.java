@@ -17,6 +17,8 @@ import org.ml4j.language.verbs.english.EnglishWordsEnGB;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugation;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugationLogic;
 import org.ml4j.language.verbs.english.conjugation.VerbConjugator;
+import org.ml4j.language.verbs.english.conjugation.irregular.modalverbs.*;
+import org.ml4j.language.verbs.english.conjugation.specialcases.SpecialCaseVerbConjugations;
 import org.ml4j.language.verbs.english.conjugation.util.VerbConjugationCSVReader;
 import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
@@ -52,8 +54,26 @@ public class IrregularVerbConjugator implements VerbConjugator<VerbConjugation> 
 
     @Override
     public VerbConjugation getConjugatedVerb(WordDefinition verbDefinition) {
-        if (verbDefinition.getWordDefinitionId().equals(new WordDefinitionId("be", 1))) {
+        if (verbDefinition.getWordDefinitionId().equals(WordDefinitionId.create("be", 1))) {
             return new ToBeVerbConjugation();
+        } else {
+            if (verbDefinition.getWordDefinitionId().equals(SpecialCaseVerbConjugations.WILL_MODAL_VERB_DEFINTION.getWordDefinitionId())) {
+                return new WillModalVerbConjugation();
+            } else if (verbDefinition.getWordDefinitionId().equals(SpecialCaseVerbConjugations.SHALL_MODAL_VERB_DEFINTION.getWordDefinitionId())) {
+                return new ShallModalVerbConjugation();
+            } else if (verbDefinition.getWordDefinitionId().equals(SpecialCaseVerbConjugations.OUGHT_MODAL_VERB_DEFINTION.getWordDefinitionId())) {
+                return new OughtModalVerbConjugation();
+            }  else if (verbDefinition.getWordDefinitionId().equals(SpecialCaseVerbConjugations.QUOTH_VERB_DEFINTION.getWordDefinitionId())) {
+                return new QuothModalVerbConjugation();
+            }  else if (verbDefinition.getWordDefinitionId().equals(SpecialCaseVerbConjugations.METHINKS_VERB_DEFINTION.getWordDefinitionId())) {
+                return new MethinksVerbConjugation();
+            } else if (verbDefinition.getWordDefinitionId().equals(SpecialCaseVerbConjugations.CAN_MODAL_VERB_DEFINTION.getWordDefinitionId())) {
+                return new CanModalVerbConjugation();
+            } else if (verbDefinition.getWordDefinitionId().equals(SpecialCaseVerbConjugations.MAY_MODAL_VERB_DEFINTION.getWordDefinitionId())) {
+                return new MayModalVerbConjugation();
+            } else if (verbDefinition.getWordDefinitionId().equals(SpecialCaseVerbConjugations.SHOULD_MODAL_VERB_DEFINTION.getWordDefinitionId())) {
+                return new ShouldModalVerbConjugation();
+            }
         }
         IrregularVerbConjugation matched = conjugations.get(verbDefinition.getWordDefinitionId());
 

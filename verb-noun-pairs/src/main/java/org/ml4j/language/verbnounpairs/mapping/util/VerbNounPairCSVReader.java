@@ -1,4 +1,4 @@
-package org.ml4.language.verbnounpairs.mapping.util;
+package org.ml4j.language.verbnounpairs.mapping.util;
 
 import org.ml4j.language.core.util.CSVReader;
 import org.ml4j.language.words.WordDefinitionId;
@@ -6,7 +6,6 @@ import org.ml4j.language.words.WordDefinitionId;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
-import java.util.function.BiFunction;
 
 
 public class VerbNounPairCSVReader extends CSVReader<WordDefinitionId, VerbNounPair> {
@@ -16,16 +15,16 @@ public class VerbNounPairCSVReader extends CSVReader<WordDefinitionId, VerbNounP
     public VerbNounPairCSVReader(boolean firstLineAsHeader, String primaryFileResource, String... additionalFileResources) {
         super((i, v) ->
                 new VerbNounPair(v.get(0), i.getMeaningId(), v.get(1)),
-                c -> new WordDefinitionId(c.getVerb(), c.getVerbOccurrenceId()),
-                (r, v) -> new WordDefinitionId(v.get(0), getVerbOccurrenceId(r, v.get(0))),
+                c -> WordDefinitionId.create(c.getVerb(), c.getVerbOccurrenceId()),
+                (r, v) -> WordDefinitionId.create(v.get(0), getVerbOccurrenceId(r, v.get(0))),
                 firstLineAsHeader, primaryFileResource, additionalFileResources);
     }
 
     public VerbNounPairCSVReader(boolean firstLineAsHeader, List<String> fileResources) {
         super((i, v) ->
                         new VerbNounPair(v.get(0), i.getMeaningId(), v.get(1)),
-                c -> new WordDefinitionId(c.getVerb(), c.getVerbOccurrenceId()),
-                (r, v) -> new WordDefinitionId(v.get(0), getVerbOccurrenceId(r, v.get(0))),
+                c -> WordDefinitionId.create(c.getVerb(), c.getVerbOccurrenceId()),
+                (r, v) -> WordDefinitionId.create(v.get(0), getVerbOccurrenceId(r, v.get(0))),
                 firstLineAsHeader, fileResources);
     }
 

@@ -9,6 +9,7 @@ import org.ml4j.language.words.WordDefinition;
 import org.ml4j.language.words.WordDefinitionId;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.SortedMap;
 
 public class RegularVerbConjugatorTestBase extends VerbConjugatorTestBase {
@@ -40,14 +41,19 @@ public class RegularVerbConjugatorTestBase extends VerbConjugatorTestBase {
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Y_FILE_PATH = "/english/regular/en-GB/regular_verbs_y_conjugations.csv";
     protected final static String EXPECTED_CONJUGATED_VERBS_STARTING_WITH_Z_FILE_PATH = "/english/regular/en-GB/regular_verbs_z_conjugations.csv";
 
-    protected void testVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePath) {
+    protected void testVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, String expectedResultsFilePaths) {
+        testVerbConjugation(verbs, Arrays.asList(expectedResultsFilePaths));
+    }
+
+
+        protected void testVerbConjugation(SortedMap<WordDefinitionId, WordDefinition> verbs, List<String> expectedResultsFilePaths) {
 
         RegularVerbConjugator regularVerbConjugator = VerbConjugators.REGULAR_VERB_CONJUGATOR;
 
         SortedMap<WordDefinitionId, RegularVerbConjugation> expectedConjugatedVerbs =
                 new VerbConjugationCSVReader<>((i, v) ->
                         new RegularVerbConjugation(v.get(0), i.getMeaningId(), getValuesFromVariables(v, "past_tense", false), getValuesFromVariables(v, "present_participle", true)),
-                        false, Arrays.asList(expectedResultsFilePath)).load();
+                        false, expectedResultsFilePaths).load();
 
         testVerbConjugation(regularVerbConjugator, expectedConjugatedVerbs, verbs);
     }

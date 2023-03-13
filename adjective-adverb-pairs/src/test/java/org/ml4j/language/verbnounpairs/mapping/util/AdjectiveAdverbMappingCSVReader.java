@@ -13,15 +13,15 @@ public class AdjectiveAdverbMappingCSVReader extends CSVReader<WordDefinitionId,
 
     public AdjectiveAdverbMappingCSVReader(BiFunction<WordDefinitionId, List<String>, AdjectiveAdverbMapping> mappingFunction, boolean firstLineAsHeader, String primaryFileResource, String... additionalFileResources) {
         super(mappingFunction,
-                c -> new WordDefinitionId(c.getAdjective(), c.getAdjectiveMeaningId()),
-                (r, v) -> new WordDefinitionId(v.get(1), getAdverbMeaningId(r, v.get(1))),
+                c -> WordDefinitionId.create(c.getAdjective(), c.getAdjectiveMeaningId()),
+                (r, v) -> WordDefinitionId.create(v.get(1), getAdverbMeaningId(r, v.get(1))),
                 firstLineAsHeader, primaryFileResource, additionalFileResources);
     }
 
     public AdjectiveAdverbMappingCSVReader(BiFunction<WordDefinitionId, List<String>, AdjectiveAdverbMapping> mappingFunction, boolean firstLineAsHeader, List<String> fileResources) {
         super(mappingFunction,
-                c -> new WordDefinitionId(c.getAdjective(), c.getAdjectiveMeaningId()),
-                (r, v) -> new WordDefinitionId(v.get(1), 1),
+                c -> WordDefinitionId.create(c.getAdjective(), c.getAdjectiveMeaningId()),
+                (r, v) -> WordDefinitionId.create(v.get(1), 1),
                 firstLineAsHeader, fileResources);
     }
 

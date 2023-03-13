@@ -14,7 +14,6 @@
 package org.ml4j.language.verbs.english.conjugation;
 
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
-import org.ml4j.language.verbs.english.tenses.Tense;
 
 import java.util.Arrays;
 import java.util.List;

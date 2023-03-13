@@ -12,5 +12,6 @@
         <module>adjective-adverb-pairs</module>
         <module>verbs</module>
         <module>verb-noun-pairs</module>
+	<module>language-dictionary</module>
     </modules>
 </project>

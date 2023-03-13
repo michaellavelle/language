@@ -14,6 +14,11 @@ public class ToBeVerbConjugation extends VerbConjugationBaseParent implements Ve
     }
 
     @Override
+    public boolean isModelVerb() {
+        return false;
+    }
+
+    @Override
     public int getMeaningId() {
         return 1;
     }
@@ -24,7 +29,7 @@ public class ToBeVerbConjugation extends VerbConjugationBaseParent implements Ve
             return Arrays.asList("was");
         } else if (SubjectType.FIRST_PERSON_PLURAL.equals(subjectType)) {
             return Arrays.asList("were");
-        } else if (SubjectType.SECOND_PERSON.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_SINGULAR.equals(subjectType) || SubjectType.SECOND_PERSON_PLURAL.equals(subjectType)) {
             return Arrays.asList("were");
         } else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
             return Arrays.asList("was");
@@ -51,7 +56,7 @@ public class ToBeVerbConjugation extends VerbConjugationBaseParent implements Ve
             return "am";
         } else if (SubjectType.FIRST_PERSON_PLURAL.equals(subjectType)) {
             return "are";
-        } else if (SubjectType.SECOND_PERSON.equals(subjectType)) {
+        } else if (SubjectType.SECOND_PERSON_SINGULAR.equals(subjectType) || SubjectType.SECOND_PERSON_PLURAL.equals(subjectType) ) {
             return "are";
         } else if (SubjectType.THIRD_PERSON_SINGULAR.equals(subjectType)) {
             return "is";

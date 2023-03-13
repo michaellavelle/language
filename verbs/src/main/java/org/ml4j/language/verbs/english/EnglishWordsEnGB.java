@@ -57,7 +57,7 @@ public class EnglishWordsEnGB {
     private final static String IRREGULAR_VERBS_TYPE_1_DEFINITION_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_1.csv";
     private final static String IRREGULAR_VERBS_TYPE_2_DEFINITION_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_2.csv";
     private final static String IRREGULAR_VERBS_TYPE_3_DEFINITION_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_3.csv";
-
+    private final static String IRREGULAR_VERBS_TYPE_4_DEFINITION_FILE_PATH = "/english/irregular/en-GB/irregular_verbs_type_4.csv";
 
     private final static String MISC_WORDS_FILE_PATH = "/english/regular/en-GB/misc_words.csv";
 
@@ -120,8 +120,7 @@ public class EnglishWordsEnGB {
             REGULAR_VERBS_STARTING_WITH_W_DEFINITION_FILE_PATH,
             REGULAR_VERBS_STARTING_WITH_X_DEFINITION_FILE_PATH,
             REGULAR_VERBS_STARTING_WITH_Y_DEFINITION_FILE_PATH,
-            REGULAR_VERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH
-    ).load();
+            REGULAR_VERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH).load();
 
 
     public final static SortedMap<WordDefinitionId, WordDefinition> ALL_VERBS = new WordDefinitionCSVReader(false,
@@ -153,14 +152,17 @@ public class EnglishWordsEnGB {
             REGULAR_VERBS_STARTING_WITH_Z_DEFINITION_FILE_PATH,
             IRREGULAR_VERBS_TYPE_1_DEFINITION_FILE_PATH,
             IRREGULAR_VERBS_TYPE_2_DEFINITION_FILE_PATH,
-            IRREGULAR_VERBS_TYPE_3_DEFINITION_FILE_PATH
+            IRREGULAR_VERBS_TYPE_3_DEFINITION_FILE_PATH,
+            IRREGULAR_VERBS_TYPE_4_DEFINITION_FILE_PATH
     ).load();
 
 
     public final static SortedMap<WordDefinitionId, WordDefinition> ALL_IRREGULAR_VERBS = new WordDefinitionCSVReader(false,
             IRREGULAR_VERBS_TYPE_1_DEFINITION_FILE_PATH,
             IRREGULAR_VERBS_TYPE_2_DEFINITION_FILE_PATH,
-            IRREGULAR_VERBS_TYPE_3_DEFINITION_FILE_PATH
+            IRREGULAR_VERBS_TYPE_3_DEFINITION_FILE_PATH,
+            IRREGULAR_VERBS_TYPE_4_DEFINITION_FILE_PATH
+
     ).load();
 
 

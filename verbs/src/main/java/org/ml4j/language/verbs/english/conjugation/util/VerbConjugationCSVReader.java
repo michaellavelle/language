@@ -16,15 +16,15 @@ public class VerbConjugationCSVReader<T extends VerbConjugation> extends CSVRead
 
     public VerbConjugationCSVReader(BiFunction<WordDefinitionId, List<String>, T> mappingFunction, Function<IrregularVerbConjugation, WordDefinitionId> idExtractor, BiFunction<SortedMap<WordDefinitionId, IrregularVerbConjugation>, List<String>, WordDefinitionId> idGenerator, boolean firstLineAsHeader, String primaryFileResource, String... additionalFileResources) {
         super(mappingFunction,
-                c -> new WordDefinitionId(c.getVerb(), c.getMeaningId()),
-                (r, v) -> new WordDefinitionId(v.get(0), getMeaningId(r, v.get(0))),
+                c -> WordDefinitionId.create(c.getVerb(), c.getMeaningId()),
+                (r, v) -> WordDefinitionId.create(v.get(0), getMeaningId(r, v.get(0))),
                 firstLineAsHeader, primaryFileResource, additionalFileResources);
     }
 
     public VerbConjugationCSVReader(BiFunction<WordDefinitionId, List<String>, T> mappingFunction, boolean firstLineAsHeader, List<String> fileResources) {
         super(mappingFunction,
-                c -> new WordDefinitionId(c.getVerb(), c.getMeaningId()),
-                (r, v) -> new WordDefinitionId(v.get(0), getMeaningId(r, v.get(0))),
+                c -> WordDefinitionId.create(c.getVerb(), c.getMeaningId()),
+                (r, v) -> WordDefinitionId.create(v.get(0), getMeaningId(r, v.get(0))),
                 firstLineAsHeader, fileResources);
     }
 

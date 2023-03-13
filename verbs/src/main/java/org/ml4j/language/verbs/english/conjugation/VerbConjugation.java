@@ -16,7 +16,10 @@ package org.ml4j.language.verbs.english.conjugation;
 import org.ml4j.language.verbs.english.conjugation.subjects.SubjectType;
 import org.ml4j.language.verbs.english.tenses.Tense;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Interface for the results of a Verb conjugation - just a tagging interface at present
@@ -26,6 +29,27 @@ import java.util.List;
 public interface VerbConjugation {
     String getVerb();
 
+    boolean isModelVerb();
+
+    default boolean isSubjectSuffixed() {
+        return false;
+    }
+
+    default List<SubjectType> getSupportedSubjectTypes() {
+        List<SubjectType> subjectTypes = new ArrayList<>();
+        subjectTypes.addAll(Arrays.stream(SubjectType.values()).collect(Collectors.toList()));
+        subjectTypes.remove(SubjectType.NONE);
+        return subjectTypes;
+    }
+
+    default List<Tense> getSupportedTenses() {
+        if (isModelVerb()) {
+            return Arrays.asList(Tense.PRESENT_SIMPLE, Tense.PAST_SIMPLE);
+        } else {
+            return Arrays.stream(Tense.values()).collect(Collectors.toList());
+        }
+    }
+
     int getMeaningId();
 
     List<String> getPastTenses(SubjectType thirdPersonSingular);
@@ -33,6 +57,14 @@ public interface VerbConjugation {
     List<String> getPastParticiples();
 
     List<String> getPresentParticiples();
+
+    default boolean hasPresentParticiples() {
+        return true;
+    }
+
+    default boolean hasPastParticiples() {
+        return true;
+    }
 
     String getPresentTense(SubjectType thirdPersonSingular);
 
