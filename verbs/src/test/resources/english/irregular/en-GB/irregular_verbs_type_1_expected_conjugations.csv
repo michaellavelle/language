@@ -45,6 +45,7 @@ grow,past_tense=grew,past_participle=grown,present_participle=growing
 hang,past_tense=hung,past_participle=hung,present_participle=hanging
 hang,past_tense=hanged,past_participle=hanged,present_participle=hanging
 hide,past_tense=hid,past_participle=hidden,present_participle=hiding
+interweave,past_tense=interwove,past_participle=interwoven,present_participle=interweaving
 know,past_tense=knew,past_participle=known,present_participle=knowing
 lie,past_tense=lay,past_participle=lain,present_participle=lying
 lie,past_tense=lied,present_participle=lying
