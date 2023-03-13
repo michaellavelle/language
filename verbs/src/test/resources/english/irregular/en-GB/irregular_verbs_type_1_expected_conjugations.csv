@@ -101,6 +101,7 @@ undo,past_tense=undid,past_participle=undone,present_participle=undoing
 unfreeze,past_tense=unfroze,past_participle=unfrozen,present_participle=unfreezing
 wake,past_tense=woke,past_tense=waked,past_participle=woken,past_participle=waked,present_participle=waking
 wear,past_tense=wore,past_participle=worn,present_participle=wearing
+weave,past_tense=wove,past_participle=woven,past_participle=wove,present_participle=weaving
 withdraw,past_tense=withdrew,past_participle=withdrawn,present_participle=withdrawing
 write,past_tense=wrote,past_participle=written,present_participle=writing
 
