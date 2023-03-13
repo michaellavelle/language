@@ -30,12 +30,12 @@ public class QuothModalVerbConjugation extends VerbConjugationBaseParent impleme
 
     @Override
     public List<String> getPastParticiples() {
-        throw new UnsupportedOperationException("No part participles defined for this modal verb:" + getVerb());
+        throw new UnsupportedOperationException("No part participles defined for this verb:" + getVerb());
     }
 
     @Override
     public List<String> getPresentParticiples() {
-        throw new UnsupportedOperationException("No present participles defined for this modal verb:" + getVerb());
+        throw new UnsupportedOperationException("No present participles defined for this verb:" + getVerb());
     }
 
     @Override

@@ -51,12 +51,12 @@ public class MethinksVerbConjugation extends VerbConjugationBaseParent implement
 
     @Override
     public List<String> getPastParticiples() {
-        throw new UnsupportedOperationException("No part participles defined for this modal verb:" + getVerb());
+        throw new UnsupportedOperationException("No part participles defined for this verb:" + getVerb());
     }
 
     @Override
     public List<String> getPresentParticiples() {
-        return Arrays.asList("methinking");
+        throw new UnsupportedOperationException("No present participles defined for this verb:" + getVerb());
     }
 
     @Override
