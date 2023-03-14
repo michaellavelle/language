@@ -230,9 +230,7 @@ public class VerbConjugationLogic {
                 }
                 return matching.get(0);
             } else {
-                System.out.println("Not found: definition for:" + word);
-                //throw new IllegalStateException("Not found: definition for:" + word);
-                return new WordDefinition(WordDefinitionId.create(word, 1));
+                throw new IllegalStateException("Not found: definition for:" + word);
             }
         } else {
             return matching.get(0);
@@ -243,7 +241,7 @@ public class VerbConjugationLogic {
         String verb = wordDefinition.getWord();
 
         if (verb.length() < 2) {
-            //throw new IllegalStateException("Verbs must be at least two letters");
+            throw new IllegalStateException("Verbs must be at least two letters");
         }
         if (isComposite(wordDefinition)) {
             String prefix = getCompositePrefix(wordDefinition);
