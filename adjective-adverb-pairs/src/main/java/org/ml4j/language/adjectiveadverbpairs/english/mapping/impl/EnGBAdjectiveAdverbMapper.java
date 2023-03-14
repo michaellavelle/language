@@ -1,6 +1,6 @@
-package org.ml4.language.adjectiveadverbpairs.english.mapping.impl;
+package org.ml4j.language.adjectiveadverbpairs.english.mapping.impl;
 
-import org.ml4.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbMapper;
+import org.ml4j.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbMapper;
 
 import java.util.ArrayList;
 import java.util.List;

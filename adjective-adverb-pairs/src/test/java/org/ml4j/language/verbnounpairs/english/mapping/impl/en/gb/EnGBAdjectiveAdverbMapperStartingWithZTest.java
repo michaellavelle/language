@@ -1,7 +1,7 @@
 package org.ml4j.language.verbnounpairs.english.mapping.impl.en.gb;
 
 import org.junit.jupiter.api.Test;
-import org.ml4.language.adjectiveadverbpairs.english.EnglishAdjectiveAdverbPairsEnGB;
+import org.ml4j.language.adjectiveadverbpairs.english.EnglishAdjectiveAdverbPairsEnGB;
 import org.ml4j.language.verbnounpairs.english.mapping.impl.base.AdjectiveAdverbMapperTestBase;
 
 public class EnGBAdjectiveAdverbMapperStartingWithZTest extends AdjectiveAdverbMapperTestBase {

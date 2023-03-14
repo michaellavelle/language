@@ -1,6 +1,6 @@
 package org.ml4j.language.dictionary.english;
 
-import org.ml4.language.adjectiveadverbpairs.english.EnglishAdjectiveAdverbPairsEnGB;
+import org.ml4j.language.adjectiveadverbpairs.english.EnglishAdjectiveAdverbPairsEnGB;
 import org.ml4j.language.adverbsnotmappedfromadjectives.english.EnglishAdverbsWithoutAdjectivesEnGB;
 import org.ml4j.language.verbnounpairs.english.VerbNounPairsEnGB;
 import org.ml4j.language.verbs.english.EnglishWordsEnGB;

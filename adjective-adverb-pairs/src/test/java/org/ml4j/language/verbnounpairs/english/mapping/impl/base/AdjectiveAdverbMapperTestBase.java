@@ -1,8 +1,8 @@
 package org.ml4j.language.verbnounpairs.english.mapping.impl.base;
 
 import org.junit.jupiter.api.Assertions;
-import org.ml4.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbMapper;
-import org.ml4.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbPairMappers;
+import org.ml4j.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbMapper;
+import org.ml4j.language.adjectiveadverbpairs.english.mapping.AdjectiveAdverbPairMappers;
 import org.ml4j.language.verbnounpairs.mapping.util.AdjectiveAdverbMapping;
 import org.ml4j.language.verbnounpairs.mapping.util.AdjectiveAdverbMappingCSVReader;
 import org.ml4j.language.words.WordDefinition;
