@@ -25,10 +25,10 @@ public class ToLiveVerbConjugationDemo {
         verbRelatedWords.add(iRegularVerbConjugation.getVerb());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPresentParticiples());
         verbRelatedWords.addAll(iRegularVerbConjugation.getPastParticiples());
-        for (SubjectType subjectType : SubjectType.values()) {
+        for (SubjectType subjectType : iRegularVerbConjugation.getSupportedSubjectTypes()) {
             verbRelatedWords.addAll(iRegularVerbConjugation.getPastTenses(subjectType));
             verbRelatedWords.add(iRegularVerbConjugation.getPresentTense(subjectType));
-            for (Tense tense : Tense.values()) {
+            for (Tense tense : iRegularVerbConjugation.getSupportedTenses()) {
                 List<String> conjugations = iRegularVerbConjugation.conjugateVerb(getDefaultSubjectName(subjectType), subjectType, tense);
                 System.out.println(tense + ":" + subjectType + ":" + conjugations);
             }
